@@ -1,13 +1,1197 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laboratorio de lógica · Unidad 3</title><style>
-:root{--bg:#0c101b;--panel:#151d2d;--panel2:#1c2638;--ink:#f3f5fa;--muted:#a6b3c8;--accent:#b8fa69;--violet:#bba8ff;--line:#354057;--good:#91edbc;--bad:#ffb0b7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#263047 0,transparent 42%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.top{max-width:1200px;margin:auto;padding:38px 22px 20px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.19em;font-weight:800;text-transform:uppercase}.hero{display:grid;grid-template-columns:1.5fr .5fr;gap:20px;align-items:center}.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.055em;margin:12px 0}.hero p{max-width:680px;color:var(--muted);line-height:1.6}.orb{width:160px;height:160px;border-radius:45%;margin:auto;background:conic-gradient(from 20deg,var(--accent),#4ce4cb,var(--violet),var(--accent));filter:drop-shadow(0 0 36px #b8fa6955);animation:float 5s ease-in-out infinite,spin 14s linear infinite;position:relative}.orb:after{content:'</>';position:absolute;inset:23px;border-radius:45%;display:grid;place-items:center;background:#151b2b;font-size:30px;font-weight:900;color:var(--accent)}@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}@keyframes spin{to{filter:hue-rotate(55deg) drop-shadow(0 0 36px #b8fa6955)}}.shell{max-width:1200px;margin:auto;padding:16px 22px 70px}.headrow{display:flex;gap:15px;justify-content:space-between;align-items:center;flex-wrap:wrap}.progress{color:var(--muted);font-size:14px}.bar{height:8px;background:#2a3548;border-radius:20px;overflow:hidden;margin:15px 0 25px}.bar>div{width:0;height:100%;background:linear-gradient(90deg,var(--violet),var(--accent));transition:width .45s}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.tab{background:#1a2333;color:#cdd5e5;border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-weight:700;transition:.2s}.tab:hover{transform:translateY(-2px);border-color:var(--accent)}.tab.active{background:var(--accent);color:#13200a;border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:17px}.card{background:linear-gradient(160deg,#1b2637,#131b29);border:1px solid #354159;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:15px;animation:rise .35s both;transition:transform .2s,border-color .2s}.card:has(.scenario){grid-column:1/-1;max-width:950px;width:100%;margin-inline:auto;padding:28px 32px}.scenario{background:#24334a;border:1px solid #52617c;border-radius:16px;padding:18px 20px;line-height:1.65;font-size:17px;color:#e7eefc}.values{background:#131e30;border:1px solid #586a8b;border-radius:12px;padding:15px 18px;font-size:19px;font-weight:750;color:#b8fa69;line-height:1.7;white-space:normal}.card:has(.scenario) .question{font-size:clamp(20px,2.7vw,27px);font-weight:800}.card:has(.scenario) .choices{grid-template-columns:repeat(2,minmax(0,1fr))}.card:hover{transform:translateY(-3px);border-color:#6a7a91}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.kicker{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--violet);font-weight:800}.question{font-size:18px;line-height:1.5;font-weight:730;white-space:pre-wrap}.choices{display:grid;gap:8px}.choice{display:flex;gap:11px;align-items:center;padding:12px 13px;border:1px solid #3b475e;border-radius:12px;background:#222c3d;color:#f4f6ff;text-align:left;transition:.18s;min-height:47px}.choice:hover:not(:disabled){border-color:var(--violet);background:#30374f}.choice.selected{border-color:var(--accent);background:#314130}.choice:disabled{cursor:default;opacity:.82}.choice .letter{font-weight:900;color:var(--accent);min-width:20px}.submit{border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#18220e;font-weight:850}.submit:disabled{opacity:.4;cursor:not-allowed}.feedback{border-radius:12px;padding:12px;font-size:14px;line-height:1.5}.feedback.good{background:#193e34;color:var(--good)}.feedback.bad{background:#49303b;color:#ffd2d5}.secondary{background:transparent;border:1px solid #7989a0;border-radius:10px;color:var(--ink);padding:10px 13px;font-weight:750}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.modal{position:fixed;inset:0;background:#050a12d9;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(9px)}.modal.show{display:flex}.dialog{background:#1b2636;border:1px solid #64758a;box-shadow:0 35px 100px #0009;border-radius:24px;max-width:650px;width:100%;max-height:88vh;overflow:auto;padding:27px;animation:rise .2s}.dialog h2{font-size:25px;margin:8px 0 12px}.answer{background:#293b33;border:1px solid #4c8e65;padding:15px;border-radius:13px;color:#c8ffd9;font-size:19px;font-weight:800}.explain{line-height:1.7;color:#d6e1f1}.explain p{background:#253144;border-left:3px solid var(--violet);padding:12px 14px;border-radius:5px 12px 12px 5px}.modalfooter{display:flex;justify-content:flex-end;margin-top:18px}.note{font-size:13px;color:var(--muted)}@media(max-width:680px){.card:has(.scenario){padding:19px}.card:has(.scenario) .choices{grid-template-columns:1fr}.scenario{font-size:15px}.values{font-size:16px}.hero{grid-template-columns:1fr}.orb{display:none}.top{padding-top:27px}.dialog{padding:20px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+:root{--bg:#0c101b;--panel:#151d2d;--panel2:#1c2638;--ink:#f3f5fa;--muted:#a6b3c8;--accent:#b8fa69;--violet:#bba8ff;--line:#354057;--good:#91edbc;--bad:#ffb0b7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#263047 0,transparent 42%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.top{max-width:1200px;margin:auto;padding:38px 22px 20px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.19em;font-weight:800;text-transform:uppercase}.hero{display:grid;grid-template-columns:1.5fr .5fr;gap:20px;align-items:center}.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.055em;margin:12px 0}.hero p{max-width:680px;color:var(--muted);line-height:1.6}.orb{width:160px;height:160px;border-radius:45%;margin:auto;background:conic-gradient(from 20deg,var(--accent),#4ce4cb,var(--violet),var(--accent));filter:drop-shadow(0 0 36px #b8fa6955);animation:float 5s ease-in-out infinite,spin 14s linear infinite;position:relative}.orb:after{content:'</>';position:absolute;inset:23px;border-radius:45%;display:grid;place-items:center;background:#151b2b;font-size:30px;font-weight:900;color:var(--accent)}@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}@keyframes spin{to{filter:hue-rotate(55deg) drop-shadow(0 0 36px #b8fa6955)}}.shell{max-width:1200px;margin:auto;padding:16px 22px 70px}.headrow{display:flex;gap:15px;justify-content:space-between;align-items:center;flex-wrap:wrap}.progress{color:var(--muted);font-size:14px}.bar{height:8px;background:#2a3548;border-radius:20px;overflow:hidden;margin:15px 0 25px}.bar>div{width:0;height:100%;background:linear-gradient(90deg,var(--violet),var(--accent));transition:width .45s}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.tab{background:#1a2333;color:#cdd5e5;border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-weight:700;transition:.2s}.tab:hover{transform:translateY(-2px);border-color:var(--accent)}.tab.active{background:var(--accent);color:#13200a;border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:17px}.card{background:linear-gradient(160deg,#1b2637,#131b29);border:1px solid #354159;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:15px;animation:rise .35s both;transition:transform .2s,border-color .2s}.card:has(.scenario){grid-column:1/-1;max-width:950px;width:100%;margin-inline:auto;padding:28px 32px}.scenario{background:#24334a;border:1px solid #52617c;border-radius:16px;padding:18px 20px;line-height:1.65;font-size:17px;color:#e7eefc}.values{background:#131e30;border:1px solid #586a8b;border-radius:12px;padding:15px 18px;font-size:19px;font-weight:750;color:#b8fa69;line-height:1.7;white-space:normal}.card:has(.scenario) .question{font-size:clamp(20px,2.7vw,27px);font-weight:800}.card:has(.scenario) .choices{grid-template-columns:repeat(2,minmax(0,1fr))}.card:hover{transform:translateY(-3px);border-color:#6a7a91}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.kicker{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--violet);font-weight:800}.question{font-size:18px;line-height:1.5;font-weight:730;white-space:pre-wrap}.choices{display:grid;gap:8px}.choice{display:flex;gap:11px;align-items:center;padding:12px 13px;border:1px solid #3b475e;border-radius:12px;background:#222c3d;color:#f4f6ff;text-align:left;transition:.18s;min-height:47px}.choice:hover:not(:disabled){border-color:var(--violet);background:#30374f}.choice.selected{border-color:var(--accent);background:#314130}.choice:disabled{cursor:default;opacity:.82}.choice .letter{font-weight:900;color:var(--accent);min-width:20px}.submit{border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#18220e;font-weight:850}.submit:disabled{opacity:.4;cursor:not-allowed}.feedback{border-radius:12px;padding:12px;font-size:14px;line-height:1.5}.feedback.good{background:#193e34;color:var(--good)}.feedback.bad{background:#49303b;color:#ffd2d5}.secondary{background:transparent;border:1px solid #7989a0;border-radius:10px;color:var(--ink);padding:10px 13px;font-weight:750}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.modal{position:fixed;inset:0;background:#050a12d9;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(9px)}.modal.show{display:flex}.dialog{background:#1b2636;border:1px solid #64758a;box-shadow:0 35px 100px #0009;border-radius:24px;max-width:650px;width:100%;max-height:88vh;overflow:auto;padding:27px;animation:rise .2s}.dialog h2{font-size:25px;margin:8px 0 12px}.answer{background:#293b33;border:1px solid #4c8e65;padding:15px;border-radius:13px;color:#c8ffd9;font-size:19px;font-weight:800}.explain{line-height:1.7;color:#d6e1f1}.explain li{background:#253144;border-left:3px solid var(--violet);padding:12px 14px;border-radius:5px 12px 12px 5px}.explain ol{padding-left:26px}.explain li{margin:10px 0}.modalfooter{display:flex;justify-content:flex-end;margin-top:18px}.note{font-size:13px;color:var(--muted)}@media(max-width:680px){.card:has(.scenario){padding:19px}.card:has(.scenario) .choices{grid-template-columns:1fr}.scenario{font-size:15px}.values{font-size:16px}.hero{grid-template-columns:1fr}.orb{display:none}.top{padding-top:27px}.dialog{padding:20px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:24px 0 18px}.category-tile{min-height:190px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;padding:25px;background:linear-gradient(140deg,#202d43,#151c2c);border:1px solid #495574;border-radius:24px;color:var(--ink);transition:transform .25s,border-color .25s,box-shadow .25s}.category-tile:hover,.category-tile:focus-visible{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 16px 35px #0005}.tile-icon{font-size:34px}.tile-title{font-size:24px;font-weight:850}.tile-meta{color:var(--accent);font-size:14px;font-weight:750}.welcome{color:var(--muted);font-size:16px;margin:12px 0 24px}.section-title{font-size:30px;margin:15px 0 5px}.tabs{margin:16px 0}.category-grid+.welcome{margin-top:20px}@media(max-width:650px){.category-grid{grid-template-columns:1fr 1fr;gap:10px}.category-tile{min-height:155px;padding:17px}.tile-title{font-size:18px}.tile-icon{font-size:27px}}@media(max-width:400px){.category-grid{grid-template-columns:1fr}}
-.context-alert{display:block;width:100%;margin:12px 0 16px;padding:12px 15px;text-align:left;color:#ffd4d8;background:rgba(204,48,71,.15);border:1px solid #f46d80;border-radius:12px;font:inherit;font-size:.92rem;line-height:1.5;cursor:pointer}.context-alert:hover,.context-alert:focus-visible{background:rgba(204,48,71,.28);outline:2px solid #ff91a0;outline-offset:2px}
 .algorithm{white-space:pre-wrap;background:#0a1323;border:1px solid #536784;border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;font:600 1.12rem/1.95 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e8f6dc;overflow-x:auto;margin:10px 0 18px}.code-label{font-weight:700;color:var(--accent);margin-top:16px;font-size:.9rem;letter-spacing:.02em}</style></head><body><header class="top"><div class="hero"><div><div class="eyebrow">Pensamiento computacional / Unidad 3</div><h1>Laboratorio<br>de lógica<span style="color:var(--accent)">.</span></h1></div><div class="orb" aria-hidden="true"></div></div></header><main class="shell"><div class="headrow"><strong>Desafíos interactivos</strong><span class="progress" id="progress" aria-live="polite"></span></div><div class="bar"><div id="bar"></div></div><nav class="tabs" id="tabs" aria-label="Categorías"></nav><div id="sectionHeading"></div><section class="grid" id="grid" aria-label="Ejercicios"></section></main><div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><div class="eyebrow">Solución razonada</div><h2 id="modalTitle"></h2><div id="modalContext" class="note"></div><div class="answer" id="answer"></div><div class="explain" id="explain"></div><div class="modalfooter"><button class="submit" id="close">Entendido</button></div></div></div><script>
-const ITEMS=[{"sec": "datos", "q": "Cantidad de hermanos: 2", "a": "Entero (int)", "steps": ["Es un conteo de personas; no se expresa en fracciones."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Temperatura corporal: 36.6", "a": "Real (float)", "steps": ["Contiene decimales."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Nombre: Laura Gómez", "a": "Cadena (string)", "steps": ["Es texto formado por caracteres."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "¿Tiene mascotas?: Falso", "a": "Booleano (bool)", "steps": ["Solo representa verdadero o falso."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Número del día de la semana: 5", "a": "Entero (int)", "steps": ["Se ha representado el día mediante un número entero; el nombre del día sería una cadena."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Precio del libro: 12.75", "a": "Real (float)", "steps": ["El valor incluye decimales."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Cantidad de camisetas en un equipo: 10", "a": "Entero (int)", "steps": ["El valor 10 indica una cantidad completa de camisetas. Es un número entero sin decimales."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Correo: laura@gmail.com", "a": "Cadena (string)", "steps": ["Aunque contiene símbolos, es texto y no una operación matemática."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "Calificación: 8.7", "a": "Real (float)", "steps": ["La nota admite decimales."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "datos", "q": "¿La cuenta está activa?: Verdadero", "a": "Booleano (bool)", "steps": ["Describe un estado lógico de dos posibilidades."], "options": ["Entero (int)", "Real (float)", "Cadena (string)", "Booleano (bool)"]}, {"sec": "variables", "q": "Edad de una persona", "a": "Variable", "steps": ["Puede cambiar con el transcurso del tiempo."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Promedio de un estudiante", "a": "Variable", "steps": ["Se modifica si cambian las calificaciones."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "PI (π) en un cálculo", "a": "Constante", "steps": ["El valor matemático de π es fijo; 3.1416 es una aproximación."], "options": ["Constante", "Variable", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "IVA aplicado a una factura", "a": "Depende del contexto", "steps": ["En un cálculo se fija una tasa para esa operación, como constante o parámetro; en la realidad la tarifa puede modificarse por normas legales. No es universalmente fija."], "options": ["Depende del contexto", "Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Temperatura durante el día", "a": "Variable", "steps": ["Puede aumentar o disminuir según la hora."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Número de días de una semana", "a": "Constante", "steps": ["Una semana tiene siete días por definición."], "options": ["Constante", "Variable", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Salario de una persona", "a": "Variable", "steps": ["Puede cambiar por acuerdos, aumentos o modificaciones laborales."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Número de páginas de un libro", "a": "Depende del contexto", "steps": ["Para un ejemplar y edición determinados suele ser fijo; entre libros o ediciones puede variar."], "options": ["Depende del contexto", "Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Precio de un producto", "a": "Variable", "steps": ["Puede modificarse por descuentos o cambios comerciales."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Número máximo de intentos configurado en 3", "a": "Constante en ese algoritmo", "steps": ["Si el algoritmo establece MAX_INTENTOS = 3 y no lo cambia durante su ejecución, funciona como constante de configuración."], "options": ["Constante en ese algoritmo", "Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "variables", "q": "Contraseña ingresada por el usuario", "a": "Variable", "steps": ["Su contenido puede cambiar al ingresarse o actualizarse."], "options": ["Variable", "Constante", "Identificador", "Asignación", "Tipo de dato"]}, {"sec": "modulo", "q": "17 % 3", "a": "2", "steps": ["17 = 5 × 3 + 2.", "El módulo devuelve el residuo de la división entera: 2."], "options": ["2", "3", "1", "4"]}, {"sec": "modulo", "q": "25 % 4", "a": "1", "steps": ["25 = 6 × 4 + 1.", "El módulo devuelve el residuo de la división entera: 1."], "options": ["1", "2", "0", "34"]}, {"sec": "modulo", "q": "37 % 5", "a": "2", "steps": ["37 = 7 × 5 + 2.", "El módulo devuelve el residuo de la división entera: 2."], "options": ["2", "3", "1", "4"]}, {"sec": "modulo", "q": "50 % 6", "a": "2", "steps": ["50 = 8 × 6 + 2.", "El módulo devuelve el residuo de la división entera: 2."], "options": ["2", "3", "1", "4"]}, {"sec": "modulo", "q": "123 % 7", "a": "4", "steps": ["123 = 17 × 7 + 4.", "El módulo devuelve el residuo de la división entera: 4."], "options": ["4", "5", "3", "8"]}, {"sec": "modulo", "q": "10 % 4", "a": "2", "steps": ["10 = 2 × 4 + 2.", "El módulo devuelve el residuo de la división entera: 2."], "options": ["2", "3", "1", "4"]}, {"sec": "modulo", "q": "29 % 6", "a": "5", "steps": ["29 = 4 × 6 + 5.", "El módulo devuelve el residuo de la división entera: 5."], "options": ["5", "6", "4", "10"]}, {"sec": "aritmetica", "q": "18 ÷ 3 + 4 × 2", "a": "14", "steps": ["18 ÷ 3 = 6 y 4 × 2 = 8.", "6 + 8 = 14."], "options": ["14", "15", "13", "28"]}, {"sec": "aritmetica", "q": "2 + 3 × (4 − 1)", "a": "11", "steps": ["Paréntesis: 4 − 1 = 3.", "Multiplicación: 3 × 3 = 9.", "Suma: 2 + 9 = 11."], "options": ["11", "12", "10", "22"]}, {"sec": "aritmetica", "q": "(12 − 4) ÷ 2 + 5 × 3", "a": "19", "steps": ["Paréntesis: 12 − 4 = 8.", "División: 8 ÷ 2 = 4; multiplicación: 5 × 3 = 15.", "Suma: 4 + 15 = 19."], "options": ["19", "20", "18", "38"]}, {"sec": "aritmetica", "q": "2² + 3 × (8 − 6) − 4 ÷ 2", "a": "8", "steps": ["Paréntesis: 8 − 6 = 2.", "Potencia: 2² = 4.", "Multiplicación: 3 × 2 = 6; división: 4 ÷ 2 = 2.", "4 + 6 − 2 = 8."], "options": ["8", "9", "7", "16"]}, {"sec": "aritmetica", "q": "(7 + 5 × 2) ÷ 3 + 10 % 4", "a": "7.666… (23/3)", "steps": ["Dentro del paréntesis: 5 × 2 = 10; 7 + 10 = 17.", "Módulo: 10 % 4 = 2.", "División: 17 ÷ 3 = 5.666…", "Suma: 17/3 + 2 = 23/3 ≈ 7.67."], "options": ["7.666… (23/3)", "No es posible determinarlo", "Se produce un error", "Ninguna de las anteriores"]}, {"sec": "aritmetica", "q": "20 − 12 ÷ 3 × 2", "a": "12", "steps": ["División y multiplicación tienen igual prioridad; se resuelven de izquierda a derecha.", "12 ÷ 3 = 4; 4 × 2 = 8.", "20 − 8 = 12."], "options": ["12", "13", "11", "24"]}, {"sec": "aritmetica", "q": "3 + 2 × 5²", "a": "53", "steps": ["Potencia: 5² = 25.", "Multiplicación: 2 × 25 = 50.", "Suma: 3 + 50 = 53."], "options": ["53", "54", "52", "106"]}, {"sec": "extra", "q": "¿Cuál es el valor final de edad?", "a": "13", "steps": ["Primero, edad almacena 10.", "Después, edad ← edad + 1 reemplaza 10 por 11.", "Finalmente, edad ← edad + 2 reemplaza 11 por 13.", "El valor final almacenado es 13."], "options": ["13", "12", "11", "10"], "context": "Seguimiento de una variable", "code": "edad ← 10\nedad ← edad + 1\nedad ← edad + 2"}, {"sec": "extra", "q": "¿Qué resultado produce la comparación A == B?", "a": "Verdadero", "steps": ["A comienza en 5 y B en 7.", "La instrucción A ← A + 2 actualiza A a 7.", "La comparación A == B comprueba 7 == 7.", "La condición es verdadera."], "options": ["Verdadero", "Falso"], "context": "Asignación y comparación", "code": "A ← 5\nB ← 7\nA ← A + 2"}, {"sec": "extra", "q": "¿Qué resultado produce (A > 5) Y (C > A)?", "a": "Falso", "steps": ["A > 5 equivale a 5 > 5: falso.", "C > A equivale a 8 > 5: verdadero.", "Con Y, ambas condiciones deben cumplirse.", "Falso Y verdadero da falso."], "options": ["Verdadero", "Falso"], "context": "Comparaciones combinadas", "code": "A ← 5\nB ← 7\nC ← 8"}, {"sec": "extra", "q": "¿Qué resultado produce total >= 25?", "a": "Verdadero", "steps": ["Se calcula 10 * 3 = 30.", "Se actualiza total: 30 - 5 = 25.", "Se compara 25 >= 25.", "Como >= incluye la igualdad, es verdadero."], "options": ["Verdadero", "Falso"], "context": "Cálculo y condición", "code": "precio ← 10\ncantidad ← 3\ntotal ← precio * cantidad\ntotal ← total - 5"}, {"sec": "extra", "q": "¿Qué resultado produce (resto == 2) Y (A > 17)?", "a": "Verdadero", "steps": ["17 % 5 produce residuo 2, por lo que resto vale 2.", "La asignación A ← A + 1 cambia A de 17 a 18.", "resto == 2 es verdadero y A > 17 también.", "Verdadero Y verdadero produce verdadero."], "options": ["Verdadero", "Falso"], "context": "Módulo, comparación y lógica", "code": "A ← 17\nB ← 5\nresto ← A % B\nA ← A + 1"}, {"sec": "relacionales", "q": "¿(nota ≥ mínimo)?", "context": "Una plataforma permite enviar una tarea cuando la nota mínima se alcanza.", "values": "nota = 7 · mínimo = 7", "a": "Verdadero", "steps": ["Sustituimos: 7 ≥ 7.", "El símbolo ≥ incluye la igualdad. La condición se cumple."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(compra > 50)?", "context": "Una tienda ofrece descuento solo para compras superiores a $50.", "values": "compra = 50", "a": "Falso", "steps": ["Sustituimos: 50 > 50.", "Ser igual a 50 no significa superar 50."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(intentos < límite)?", "context": "El sistema admite menos de tres intentos antes de bloquear la operación.", "values": "intentos = 3 · límite = 3", "a": "Falso", "steps": ["Sustituimos: 3 < 3.", "Ya se alcanzó el límite."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(saldo ≥ retiro)?", "context": "Una persona desea retirar dinero de su cuenta.", "values": "saldo = 125 · retiro = 125", "a": "Verdadero", "steps": ["Sustituimos: 125 ≥ 125.", "El saldo alcanza exactamente para el retiro."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(edad ≠ 18)?", "context": "Se desea comprobar que la edad registrada sea diferente de 18.", "values": "edad = 17", "a": "Verdadero", "steps": ["Sustituimos: 17 ≠ 18.", "Los valores son distintos."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(créditos ≤ 24)?", "context": "Un estudiante puede registrar como máximo 24 créditos.", "values": "créditos = 25", "a": "Falso", "steps": ["Sustituimos: 25 ≤ 24.", "El valor supera el máximo permitido."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(A + B) > (A × B)?", "context": "Compara la suma de dos valores con su producto.", "values": "A = 8 · B = 3", "a": "Falso", "steps": ["A + B == 8 + 3 == 11.", "A × B == 8 × 3 == 24.", "11 > 24 es falso."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(precio − descuento) == 60?", "context": "Comprueba si el precio descontado coincide con el precio esperado.", "values": "precio = 80 · descuento = 20", "a": "Verdadero", "steps": ["80 − 20 == 60.", "60 == 60 es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(nombre1 == nombre2)?", "context": "El sistema distingue mayúsculas y minúsculas al comparar nombres.", "values": "nombre1 = \"Ana\" · nombre2 = \"ana\"", "a": "Falso", "steps": ["Se compara “Ana” con “ana”.", "La A mayúscula es diferente de la a minúscula bajo esta regla."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(X MOD 4) == 2?", "context": "Determina si el residuo de una división es igual a 2.", "values": "X = 14", "a": "Verdadero", "steps": ["14 ÷ 4 deja residuo 2.", "2 == 2 es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(C > B) == (A < B)?", "context": "Se asignan tres números y se compara el mayor con una suma.", "values": "A = 5 · B = 7 · C = 8", "a": "Verdadero", "steps": ["C > B: 8 > 7 es verdadero.", "A < B: 5 < 7 es verdadero.", "Verdadero == verdadero es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "relacionales", "q": "¿(A + B) < (C + 3)?", "context": "Un algoritmo calcula un valor antes de comprobar si es menor que otro.", "values": "A = 5 · B = 7 · C = 8", "a": "Falso", "steps": ["A + B == 12.", "C + 3 == 11.", "12 < 11 es falso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿(promedio ≥ 8) Y (asistencia ≥ 80)?", "context": "Para acceder a una beca, el estudiante debe cumplir AMBOS requisitos: promedio mínimo de 8 y asistencia mínima del 80 %.", "values": "promedio = 9 · asistencia = 90 %", "a": "Verdadero", "steps": ["9 ≥ 8 es verdadero.", "90 ≥ 80 es verdadero.", "Y exige ambas condiciones verdaderas: se cumple."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿(promedio ≥ 8) Y (asistencia ≥ 80)?", "context": "Para recibir la beca deben cumplirse simultáneamente promedio y asistencia.", "values": "promedio = 9 · asistencia = 70 %", "a": "Falso", "steps": ["9 ≥ 8 es verdadero.", "70 ≥ 80 es falso.", "Verdadero Y falso es falso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿es_estudiante O es_docente?", "context": "Un evento permite ingresar a quien sea estudiante O docente. Basta cumplir una de las dos condiciones.", "values": "es_estudiante = Falso · es_docente = Verdadero", "a": "Verdadero", "steps": ["La primera condición es falsa.", "La segunda es verdadera.", "Falso O verdadero es verdadero: sí puede ingresar."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿es_estudiante O es_docente?", "context": "Un evento permite ingresar únicamente a estudiantes o docentes. Una persona no pertenece a ninguno de los grupos.", "values": "es_estudiante = Falso · es_docente = Falso", "a": "Falso", "steps": ["No es estudiante: falso.", "No es docente: falso.", "Falso O falso es falso: no puede ingresar."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿NO cuenta_bloqueada?", "context": "Una plataforma permite el acceso si la cuenta NO está bloqueada.", "values": "cuenta_bloqueada = Falso", "a": "Verdadero", "steps": ["La cuenta bloqueada tiene valor falso.", "NO invierte el valor: NO falso == verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿NO cuenta_bloqueada?", "context": "Una plataforma permite el acceso si la cuenta NO está bloqueada.", "values": "cuenta_bloqueada = Verdadero", "a": "Falso", "steps": ["La cuenta sí está bloqueada.", "NO verdadero == falso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿(nota ≥ 70) Y (asistencia ≥ 80)?", "context": "Para aprobar se exige nota mínima de 70 y asistencia mínima del 80 %.", "values": "nota = 75 · asistencia = 70 %", "a": "Falso", "steps": ["75 ≥ 70 es verdadero.", "70 ≥ 80 es falso.", "Con Y, una condición falsa hace falso el resultado."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿(A > 5) Y (C > A)?", "context": "Analiza dos comparaciones con valores almacenados en variables.", "values": "A = 5 · B = 7 · C = 8", "a": "Falso", "steps": ["A > 5: 5 > 5 es falso.", "C > A: 8 > 5 es verdadero.", "Falso Y verdadero es falso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿(B < A) O (C ≥ B)?", "context": "Una aplicación permite continuar si se cumple al menos una comparación.", "values": "A = 5 · B = 7 · C = 8", "a": "Verdadero", "steps": ["B < A: 7 < 5 es falso.", "C ≥ B: 8 ≥ 7 es verdadero.", "Falso O verdadero es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿NO ((A == 5) Y (B > C))?", "context": "Se desea negar una condición formada por dos comparaciones.", "values": "A = 5 · B = 7 · C = 8", "a": "Verdadero", "steps": ["A == 5 es verdadero.", "B > C: 7 > 8 es falso.", "Verdadero Y falso es falso; NO falso es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿tarjeta XOR código?", "context": "Un sistema acepta una credencial de tarjeta O un código, pero exige exactamente uno de los dos (O exclusivo / XOR).", "values": "tarjeta = Verdadero · código = Verdadero", "a": "Falso", "steps": ["Ambas credenciales están presentes.", "XOR solo es verdadero si exactamente una condición lo es."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿((edad ≥ 18) Y tiene_cédula) O autorizado?", "context": "La plataforma permite acceder si una persona es mayor de edad y tiene cédula, O si cuenta con una autorización especial.", "values": "edad = 16 · tiene_cédula = Verdadero · autorizado = Verdadero", "a": "Verdadero", "steps": ["16 ≥ 18 es falso.", "Falso Y verdadero es falso.", "Falso O verdadero es verdadero: la autorización permite el acceso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿NO ((nota < 0) O (nota > 10))?", "context": "El sistema solo acepta notas entre 0 y 10, inclusive. Se comprueba que la nota NO esté fuera de rango.", "values": "nota = 10.5", "a": "Falso", "steps": ["10.5 < 0 es falso.", "10.5 > 10 es verdadero.", "Falso O verdadero == verdadero; NO verdadero == falso."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿((A MOD B) == 1) Y NO (C > B)?", "context": "Un algoritmo combina residuo, comparación y negación.", "values": "A = 10 · B = 3 · C = 2", "a": "Verdadero", "steps": ["10 MOD 3 == 1, primera comparación verdadera.", "2 > 3 es falso, así que NO falso es verdadero.", "Verdadero Y verdadero es verdadero."], "options": ["Verdadero", "Falso"]}, {"sec": "logicos", "q": "¿matrícula_activa Y NO suspendido?", "context": "Un estudiante accede al laboratorio si tiene matrícula activa y no está suspendido.", "values": "matrícula_activa = Verdadero · suspendido = Verdadero", "a": "Falso", "steps": ["Matrícula activa es verdadero.", "NO suspendido == NO verdadero == falso.", "Verdadero Y falso es falso."], "options": ["Verdadero", "Falso"]}];
-const CONTEXT_NOTES={
-'IVA aplicado a una factura':'El IVA puede considerarse constante durante un cálculo si se fija una tarifa para esa operación. Sin embargo, la tarifa puede cambiar por decisiones y disposiciones legales; por eso, al analizarla a lo largo del tiempo, es variable. No es una constante matemática como π.',
-'Número de páginas de un libro':'Para un libro de una edición concreta, el número de páginas permanece fijo. Al comparar libros diferentes o distintas ediciones de una obra, la cantidad puede cambiar. La clasificación depende de qué se esté analizando.'
-};
+const ITEMS=[
+  {
+    "sec": "datos",
+    "q": "Cantidad de hermanos: 2",
+    "a": "Entero (int)",
+    "steps": [
+      "Es un conteo de personas; no se expresa en fracciones."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Temperatura corporal: 36.6",
+    "a": "Real (float)",
+    "steps": [
+      "Contiene decimales."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Nombre: Laura Gómez",
+    "a": "Cadena (string)",
+    "steps": [
+      "Es texto formado por caracteres."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "¿Tiene mascotas?: Falso",
+    "a": "Booleano (bool)",
+    "steps": [
+      "Solo representa verdadero o falso."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Número del día de la semana: 5",
+    "a": "Entero (int)",
+    "steps": [
+      "Se ha representado el día mediante un número entero; el nombre del día sería una cadena."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Precio del libro: 12.75",
+    "a": "Real (float)",
+    "steps": [
+      "El valor incluye decimales."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Cantidad de camisetas en un equipo: 10",
+    "a": "Entero (int)",
+    "steps": [
+      "El valor 10 indica una cantidad completa de camisetas. Es un número entero sin decimales."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Correo: laura@gmail.com",
+    "a": "Cadena (string)",
+    "steps": [
+      "Aunque contiene símbolos, es texto y no una operación matemática."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Calificación: 8.7",
+    "a": "Real (float)",
+    "steps": [
+      "La nota admite decimales."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "¿La cuenta está activa?: Verdadero",
+    "a": "Booleano (bool)",
+    "steps": [
+      "Describe un estado lógico de dos posibilidades."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "Código de un casillero: \"0012\"",
+    "a": "Cadena (string)",
+    "steps": [
+      "El código está escrito entre comillas: \"0012\". Se representa como texto, aunque sus caracteres sean dígitos.",
+      "Sirve para identificar el casillero; los ceros iniciales forman parte del código. Por eso se utiliza una cadena."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "datos",
+    "q": "¿Está lloviendo?: Verdadero",
+    "a": "Booleano (bool)",
+    "steps": [
+      "El dato indica si está lloviendo o no.",
+      "Solo admite dos valores: Verdadero o Falso. Por eso es un booleano."
+    ],
+    "options": [
+      "Entero (int)",
+      "Real (float)",
+      "Cadena (string)",
+      "Booleano (bool)"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Edad de una persona",
+    "a": "Variable",
+    "steps": [
+      "Puede cambiar con el transcurso del tiempo."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Promedio de un estudiante",
+    "a": "Variable",
+    "steps": [
+      "Se modifica si cambian las calificaciones."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "PI (π) en un cálculo",
+    "a": "Constante",
+    "steps": [
+      "El valor matemático de π es fijo; 3.1416 es una aproximación."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Tarifa del IVA fijada para el cálculo de una factura",
+    "a": "Constante",
+    "steps": [
+      "La tarifa del IVA se fija antes de calcular esta factura.",
+      "Durante ese cálculo, la tarifa permanece igual; por eso se trata como constante.",
+      "El importe del IVA se calcula usando esa tarifa y la base de la factura. La tarifa puede cambiar para otros cálculos, pero permanece fija en este proceso."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Temperatura durante el día",
+    "a": "Variable",
+    "steps": [
+      "Puede aumentar o disminuir según la hora."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Número de días de una semana",
+    "a": "Constante",
+    "steps": [
+      "Una semana tiene siete días por definición."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Salario de una persona",
+    "a": "Variable",
+    "steps": [
+      "Puede cambiar por acuerdos, aumentos o modificaciones laborales."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Número de páginas de un libro de una edición determinada",
+    "a": "Constante",
+    "steps": [
+      "Se considera un libro de una edición determinada.",
+      "Su número de páginas permanece fijo en este caso; por eso se trata como constante."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Precio de un producto",
+    "a": "Variable",
+    "steps": [
+      "Puede modificarse por descuentos o cambios comerciales."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Número máximo de intentos configurado en 3",
+    "a": "Constante",
+    "steps": [
+      "El algoritmo fija MAX_INTENTOS en 3.",
+      "Ese límite no se modifica durante la ejecución; por eso es una constante."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Contraseña ingresada por el usuario",
+    "a": "Variable",
+    "steps": [
+      "Su contenido puede cambiar al ingresarse o actualizarse."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Puntaje de un jugador que aumenta al ganar puntos",
+    "a": "Variable",
+    "steps": [
+      "El jugador comienza con un puntaje.",
+      "Cuando gana puntos, el valor almacenado se actualiza. Por eso el puntaje es una variable."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "variables",
+    "q": "Cantidad de minutos de una hora: 60",
+    "a": "Constante",
+    "steps": [
+      "Una hora equivale a 60 minutos.",
+      "En un algoritmo que convierte horas a minutos, ese valor permanece fijo. Por eso se trata como constante."
+    ],
+    "options": [
+      "Variable",
+      "Constante"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "17 % 3",
+    "a": "2",
+    "steps": [
+      "17 = 5 × 3 + 2.",
+      "El módulo devuelve el residuo de la división entera: 2."
+    ],
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "25 % 4",
+    "a": "1",
+    "steps": [
+      "25 = 6 × 4 + 1.",
+      "El módulo devuelve el residuo de la división entera: 1."
+    ],
+    "options": [
+      "1",
+      "2",
+      "0",
+      "34"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "37 % 5",
+    "a": "2",
+    "steps": [
+      "37 = 7 × 5 + 2.",
+      "El módulo devuelve el residuo de la división entera: 2."
+    ],
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "50 % 6",
+    "a": "2",
+    "steps": [
+      "50 = 8 × 6 + 2.",
+      "El módulo devuelve el residuo de la división entera: 2."
+    ],
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "123 % 7",
+    "a": "4",
+    "steps": [
+      "123 = 17 × 7 + 4.",
+      "El módulo devuelve el residuo de la división entera: 4."
+    ],
+    "options": [
+      "4",
+      "5",
+      "3",
+      "8"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "10 % 4",
+    "a": "2",
+    "steps": [
+      "10 = 2 × 4 + 2.",
+      "El módulo devuelve el residuo de la división entera: 2."
+    ],
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "29 % 6",
+    "a": "5",
+    "steps": [
+      "29 = 4 × 6 + 5.",
+      "El módulo devuelve el residuo de la división entera: 5."
+    ],
+    "options": [
+      "5",
+      "6",
+      "4",
+      "10"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "14 % 4",
+    "a": "2",
+    "steps": [
+      "Buscamos cuántos grupos completos de 4 caben en 14: caben 3.",
+      "Multiplicamos: 3 × 4 = 12.",
+      "Restamos para hallar lo que sobra: 14 − 12 = 2.",
+      "El módulo devuelve ese residuo. Resultado: 14 % 4 = 2."
+    ],
+    "options": [
+      "2",
+      "3",
+      "4",
+      "0"
+    ]
+  },
+  {
+    "sec": "modulo",
+    "q": "12 % 3",
+    "a": "0",
+    "steps": [
+      "Buscamos cuántos grupos completos de 3 caben en 12: caben 4.",
+      "Multiplicamos: 4 × 3 = 12.",
+      "Restamos para hallar lo que sobra: 12 − 12 = 0.",
+      "La división es exacta y no sobra nada. Resultado: 12 % 3 = 0."
+    ],
+    "options": [
+      "0",
+      "4",
+      "3",
+      "1"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "18 ÷ 3 + 4 × 2",
+    "a": "14",
+    "steps": [
+      "División: 18 ÷ 3 = 6. División y multiplicación tienen la misma prioridad; empezamos por la operación situada más a la izquierda. Queda: 6 + 4 × 2.",
+      "Multiplicación: 4 × 2 = 8. Queda: 6 + 8.",
+      "Suma: 6 + 8 = 14. Resultado final: 14."
+    ],
+    "options": [
+      "14",
+      "15",
+      "13",
+      "28"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "2 + 3 × (4 − 1)",
+    "a": "11",
+    "steps": [
+      "Paréntesis: 4 − 1 = 3. Queda: 2 + 3 × 3.",
+      "Multiplicación: 3 × 3 = 9. Se realiza antes de la suma. Queda: 2 + 9.",
+      "Suma: 2 + 9 = 11. Resultado final: 11."
+    ],
+    "options": [
+      "11",
+      "12",
+      "10",
+      "22"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "(12 − 4) ÷ 2 + 5 × 3",
+    "a": "19",
+    "steps": [
+      "Paréntesis: 12 − 4 = 8. Queda: 8 ÷ 2 + 5 × 3.",
+      "División: 8 ÷ 2 = 4. División y multiplicación tienen la misma prioridad; avanzamos de izquierda a derecha. Queda: 4 + 5 × 3.",
+      "Multiplicación: 5 × 3 = 15. Queda: 4 + 15.",
+      "Suma: 4 + 15 = 19. Resultado final: 19."
+    ],
+    "options": [
+      "19",
+      "20",
+      "18",
+      "38"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "2² + 3 × (8 − 6) − 4 ÷ 2",
+    "a": "8",
+    "steps": [
+      "Paréntesis: 8 − 6 = 2. Queda: 2² + 3 × 2 − 4 ÷ 2.",
+      "Potencia: 2² = 4. Queda: 4 + 3 × 2 − 4 ÷ 2.",
+      "Multiplicación: 3 × 2 = 6. Multiplicación y división tienen la misma prioridad; empezamos por la situada más a la izquierda. Queda: 4 + 6 − 4 ÷ 2.",
+      "División: 4 ÷ 2 = 2. Queda: 4 + 6 − 2.",
+      "Suma: 4 + 6 = 10. Suma y resta tienen la misma prioridad; avanzamos de izquierda a derecha. Queda: 10 − 2.",
+      "Resta: 10 − 2 = 8. Resultado final: 8."
+    ],
+    "options": [
+      "8",
+      "9",
+      "7",
+      "16"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "(7 + 5 × 2) ÷ 3 + 10 % 4",
+    "a": "7.666… (23/3)",
+    "steps": [
+      "Multiplicación dentro del paréntesis: 5 × 2 = 10. Queda: (7 + 10) ÷ 3 + 10 % 4.",
+      "Suma dentro del paréntesis: 7 + 10 = 17. Queda: 17 ÷ 3 + 10 % 4.",
+      "División: 17 ÷ 3 = 17/3. División y módulo tienen la misma prioridad; avanzamos de izquierda a derecha. Conservamos la fracción exacta. Queda: (17/3) + 10 % 4.",
+      "Módulo: 10 % 4 = 2, el residuo de dividir 10 entre 4. Queda: (17/3) + 2.",
+      "Suma: (17/3) + 2 = 23/3. Resultado final: 7.666… (aproximadamente 7.67)."
+    ],
+    "options": [
+      "7.666… (23/3)",
+      "No es posible determinarlo",
+      "Se produce un error",
+      "Ninguna de las anteriores"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "20 − 12 ÷ 3 × 2",
+    "a": "12",
+    "steps": [
+      "División: 12 ÷ 3 = 4. División y multiplicación tienen la misma prioridad; empezamos por la situada más a la izquierda. Queda: 20 − 4 × 2.",
+      "Multiplicación: 4 × 2 = 8. Queda: 20 − 8.",
+      "Resta: 20 − 8 = 12. Resultado final: 12."
+    ],
+    "options": [
+      "12",
+      "13",
+      "11",
+      "24"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "3 + 2 × 5²",
+    "a": "53",
+    "steps": [
+      "Potencia: 5² = 25. Queda: 3 + 2 × 25.",
+      "Multiplicación: 2 × 25 = 50. Queda: 3 + 50.",
+      "Suma: 3 + 50 = 53. Resultado final: 53."
+    ],
+    "options": [
+      "53",
+      "54",
+      "52",
+      "106"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "6 + 2 × 3",
+    "a": "12",
+    "steps": [
+      "Multiplicación: 2 × 3 = 6. Tiene mayor prioridad que la suma. Queda: 6 + 6.",
+      "Suma: 6 + 6 = 12. Resultado final: 12."
+    ],
+    "options": [
+      "12",
+      "24",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "(6 + 2) × 3",
+    "a": "24",
+    "steps": [
+      "Paréntesis: 6 + 2 = 8. Se resuelve primero porque está dentro del paréntesis. Queda: 8 × 3.",
+      "Multiplicación: 8 × 3 = 24. Resultado final: 24."
+    ],
+    "options": [
+      "24",
+      "12",
+      "18",
+      "20"
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Cuál es el valor final de edad?",
+    "a": "13",
+    "steps": [
+      "Primero, edad almacena 10.",
+      "Después, edad ← edad + 1 reemplaza 10 por 11.",
+      "Finalmente, edad ← edad + 2 reemplaza 11 por 13.",
+      "El valor final almacenado es 13."
+    ],
+    "options": [
+      "13",
+      "12",
+      "11",
+      "10"
+    ],
+    "context": "Seguimiento de una variable",
+    "code": "edad ← 10\nedad ← edad + 1\nedad ← edad + 2"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce la comparación A == B?",
+    "a": "Verdadero",
+    "steps": [
+      "A comienza en 5 y B en 7.",
+      "La instrucción A ← A + 2 actualiza A a 7.",
+      "La comparación A == B comprueba 7 == 7.",
+      "La condición es verdadera."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Asignación y comparación",
+    "code": "A ← 5\nB ← 7\nA ← A + 2"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce (A > 5) Y (C > A)?",
+    "a": "Falso",
+    "steps": [
+      "A > 5 equivale a 5 > 5: falso.",
+      "C > A equivale a 8 > 5: verdadero.",
+      "Con Y, ambas condiciones deben cumplirse.",
+      "Falso Y verdadero da falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Comparaciones combinadas",
+    "code": "A ← 5\nB ← 7\nC ← 8"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce total >= 25?",
+    "a": "Verdadero",
+    "steps": [
+      "Se calcula 10 * 3 = 30.",
+      "Se actualiza total: 30 - 5 = 25.",
+      "Se compara 25 >= 25.",
+      "Como >= incluye la igualdad, es verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Cálculo y condición",
+    "code": "precio ← 10\ncantidad ← 3\ntotal ← precio * cantidad\ntotal ← total - 5"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce (resto == 2) Y (A > 17)?",
+    "a": "Verdadero",
+    "steps": [
+      "17 % 5 produce residuo 2, por lo que resto vale 2.",
+      "La asignación A ← A + 1 cambia A de 17 a 18.",
+      "resto == 2 es verdadero y A > 17 también.",
+      "Verdadero Y verdadero produce verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Módulo, comparación y lógica",
+    "code": "A ← 17\nB ← 5\nresto ← A % B\nA ← A + 1"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Cuál es el valor final de puntos?",
+    "a": "10",
+    "steps": [
+      "Asignación inicial: puntos almacena 4.",
+      "Multiplicación: puntos × 2 equivale a 4 × 2 = 8. La instrucción actualiza puntos a 8.",
+      "Suma: puntos + 2 equivale a 8 + 2 = 10. La instrucción actualiza puntos a 10.",
+      "Resultado final: puntos almacena 10."
+    ],
+    "options": [
+      "10",
+      "12",
+      "8",
+      "6"
+    ],
+    "context": "Un jugador duplica su puntaje y después recibe dos puntos adicionales. Sigue las instrucciones en orden.",
+    "code": "puntos ← 4\npuntos ← puntos * 2\npuntos ← puntos + 2"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce resto == 0?",
+    "a": "Verdadero",
+    "steps": [
+      "Asignaciones iniciales: caramelos almacena 12 y personas almacena 3.",
+      "Módulo: 12 % 3 = 0, porque los 12 caramelos se reparten exactamente entre 3 personas.",
+      "Asignación: resto almacena 0.",
+      "Comparación: resto == 0 equivale a 0 == 0 y da Verdadero. No sobran caramelos."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Se reparten caramelos por igual. Comprueba si el reparto termina sin sobrantes.",
+    "code": "caramelos ← 12\npersonas ← 3\nresto ← caramelos % personas"
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué resultado produce (edad >= 12) Y NO suspendido?",
+    "a": "Falso",
+    "steps": [
+      "Comparación: edad >= 12 equivale a 13 >= 12 y da Verdadero. Se cumple la edad mínima.",
+      "Negación: suspendido vale Verdadero, por lo que NO suspendido = Falso.",
+      "Conjunción: Verdadero Y Falso = Falso. Y exige que ambas condiciones sean verdaderas.",
+      "Resultado: no se permite participar porque el estudiante está suspendido, aunque cumple la edad mínima."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ],
+    "context": "Para participar en un juego se requiere tener al menos 12 años y no estar suspendido. Evalúa si el estudiante puede participar.",
+    "code": "edad ← 13\nsuspendido ← Verdadero"
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(nota ≥ mínimo)?",
+    "context": "Una plataforma permite enviar una tarea cuando la nota mínima se alcanza.",
+    "values": "nota = 7 · mínimo = 7",
+    "a": "Verdadero",
+    "steps": [
+      "Sustituimos: 7 ≥ 7.",
+      "El símbolo ≥ incluye la igualdad. La condición se cumple."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(compra > 50)?",
+    "context": "Una tienda ofrece descuento solo para compras superiores a $50.",
+    "values": "compra = 50",
+    "a": "Falso",
+    "steps": [
+      "Sustituimos: 50 > 50.",
+      "Ser igual a 50 no significa superar 50."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(intentos < límite)?",
+    "context": "El sistema admite menos de tres intentos antes de bloquear la operación.",
+    "values": "intentos = 3 · límite = 3",
+    "a": "Falso",
+    "steps": [
+      "Sustituimos: 3 < 3.",
+      "Ya se alcanzó el límite."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(saldo ≥ retiro)?",
+    "context": "Una persona desea retirar dinero de su cuenta.",
+    "values": "saldo = 125 · retiro = 125",
+    "a": "Verdadero",
+    "steps": [
+      "Sustituimos: 125 ≥ 125.",
+      "El saldo alcanza exactamente para el retiro."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(edad ≠ 18)?",
+    "context": "Se desea comprobar que la edad registrada sea diferente de 18.",
+    "values": "edad = 17",
+    "a": "Verdadero",
+    "steps": [
+      "Sustituimos: 17 ≠ 18.",
+      "Los valores son distintos."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(créditos ≤ 24)?",
+    "context": "Un estudiante puede registrar como máximo 24 créditos.",
+    "values": "créditos = 25",
+    "a": "Falso",
+    "steps": [
+      "Sustituimos: 25 ≤ 24.",
+      "El valor supera el máximo permitido."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(A + B) > (A × B)?",
+    "context": "Compara la suma de dos valores con su producto.",
+    "values": "A = 8 · B = 3",
+    "a": "Falso",
+    "steps": [
+      "A + B == 8 + 3 == 11.",
+      "A × B == 8 × 3 == 24.",
+      "11 > 24 es falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(precio − descuento) == 60?",
+    "context": "Comprueba si el precio descontado coincide con el precio esperado.",
+    "values": "precio = 80 · descuento = 20",
+    "a": "Verdadero",
+    "steps": [
+      "80 − 20 == 60.",
+      "60 == 60 es verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(nombre1 == nombre2)?",
+    "context": "El sistema distingue mayúsculas y minúsculas al comparar nombres.",
+    "values": "nombre1 = \"Ana\" · nombre2 = \"ana\"",
+    "a": "Falso",
+    "steps": [
+      "Se compara “Ana” con “ana”.",
+      "La A mayúscula es diferente de la a minúscula bajo esta regla."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(X MOD 4) == 2?",
+    "context": "Determina si el residuo de una división es igual a 2.",
+    "values": "X = 14",
+    "a": "Verdadero",
+    "steps": [
+      "14 ÷ 4 deja residuo 2.",
+      "2 == 2 es verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(C > B) == (A < B)?",
+    "context": "Se asignan tres números y se compara el mayor con una suma.",
+    "values": "A = 5 · B = 7 · C = 8",
+    "a": "Verdadero",
+    "steps": [
+      "C > B: 8 > 7 es verdadero.",
+      "A < B: 5 < 7 es verdadero.",
+      "Verdadero == verdadero es verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "relacionales",
+    "q": "¿(A + B) < (C + 3)?",
+    "context": "Un algoritmo calcula un valor antes de comprobar si es menor que otro.",
+    "values": "A = 5 · B = 7 · C = 8",
+    "a": "Falso",
+    "steps": [
+      "A + B == 12.",
+      "C + 3 == 11.",
+      "12 < 11 es falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿(promedio ≥ 8) Y (asistencia ≥ 80)?",
+    "context": "Para acceder a una beca, el estudiante debe cumplir AMBOS requisitos: promedio mínimo de 8 y asistencia mínima del 80 %.",
+    "values": "promedio = 9 · asistencia = 90 %",
+    "a": "Verdadero",
+    "steps": [
+      "9 ≥ 8 es verdadero.",
+      "90 ≥ 80 es verdadero.",
+      "Y exige ambas condiciones verdaderas: se cumple."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿(promedio ≥ 8) Y (asistencia ≥ 80)?",
+    "context": "Para recibir la beca deben cumplirse simultáneamente promedio y asistencia.",
+    "values": "promedio = 9 · asistencia = 70 %",
+    "a": "Falso",
+    "steps": [
+      "9 ≥ 8 es verdadero.",
+      "70 ≥ 80 es falso.",
+      "Verdadero Y falso es falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿es_estudiante O es_docente?",
+    "context": "Un evento permite ingresar a quien sea estudiante O docente. Basta cumplir una de las dos condiciones.",
+    "values": "es_estudiante = Falso · es_docente = Verdadero",
+    "a": "Verdadero",
+    "steps": [
+      "La primera condición es falsa.",
+      "La segunda es verdadera.",
+      "Falso O verdadero es verdadero: sí puede ingresar."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿es_estudiante O es_docente?",
+    "context": "Un evento permite ingresar únicamente a estudiantes o docentes. Una persona no pertenece a ninguno de los grupos.",
+    "values": "es_estudiante = Falso · es_docente = Falso",
+    "a": "Falso",
+    "steps": [
+      "No es estudiante: falso.",
+      "No es docente: falso.",
+      "Falso O falso es falso: no puede ingresar."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿Qué valor tiene permite_acceso = NO cuenta_bloqueada?",
+    "context": "Una plataforma permite el acceso únicamente si la cuenta no está bloqueada. Evalúa la condición permite_acceso = NO cuenta_bloqueada.",
+    "values": "cuenta_bloqueada = Falso",
+    "a": "Verdadero",
+    "steps": [
+      "Dato inicial: cuenta_bloqueada = Falso. Esto significa que la cuenta NO está bloqueada.",
+      "Sustituimos en la condición: permite_acceso = NO Falso.",
+      "Aplicamos la negación: NO Falso = Verdadero. La negación evalúa la condición; no cambia el estado de la cuenta.",
+      "Resultado: permite_acceso = Verdadero. Sí se permite el acceso porque la cuenta no está bloqueada."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿Qué valor tiene permite_acceso = NO cuenta_bloqueada?",
+    "context": "Una plataforma permite el acceso únicamente si la cuenta no está bloqueada. Evalúa la condición permite_acceso = NO cuenta_bloqueada.",
+    "values": "cuenta_bloqueada = Verdadero",
+    "a": "Falso",
+    "steps": [
+      "Dato inicial: cuenta_bloqueada = Verdadero. Esto significa que la cuenta SÍ está bloqueada.",
+      "Sustituimos en la condición: permite_acceso = NO Verdadero.",
+      "Aplicamos la negación: NO Verdadero = Falso. La cuenta sigue bloqueada.",
+      "Resultado: permite_acceso = Falso. No se permite el acceso porque la cuenta está bloqueada."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿(nota ≥ 70) Y (asistencia ≥ 80)?",
+    "context": "Para aprobar se exige nota mínima de 70 y asistencia mínima del 80 %.",
+    "values": "nota = 75 · asistencia = 70 %",
+    "a": "Falso",
+    "steps": [
+      "75 ≥ 70 es verdadero.",
+      "70 ≥ 80 es falso.",
+      "Con Y, una condición falsa hace falso el resultado."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿(A > 5) Y (C > A)?",
+    "context": "Analiza dos comparaciones con valores almacenados en variables.",
+    "values": "A = 5 · B = 7 · C = 8",
+    "a": "Falso",
+    "steps": [
+      "A > 5: 5 > 5 es falso.",
+      "C > A: 8 > 5 es verdadero.",
+      "Falso Y verdadero es falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿(B < A) O (C ≥ B)?",
+    "context": "Una aplicación permite continuar si se cumple al menos una comparación.",
+    "values": "A = 5 · B = 7 · C = 8",
+    "a": "Verdadero",
+    "steps": [
+      "B < A: 7 < 5 es falso.",
+      "C ≥ B: 8 ≥ 7 es verdadero.",
+      "Falso O verdadero es verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿NO ((A == 5) Y (B > C))?",
+    "context": "Se desea negar una condición formada por dos comparaciones.",
+    "values": "A = 5 · B = 7 · C = 8",
+    "a": "Verdadero",
+    "steps": [
+      "Primera comparación: A == 5 da Verdadero.",
+      "Segunda comparación: B > C equivale a 7 > 8 y da Falso.",
+      "Resolvemos el paréntesis: Verdadero Y Falso = Falso.",
+      "Aplicamos NO al resultado del paréntesis: NO Falso = Verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿tarjeta XOR código?",
+    "context": "Un sistema acepta una credencial de tarjeta O un código, pero exige exactamente uno de los dos (O exclusivo / XOR).",
+    "values": "tarjeta = Verdadero · código = Verdadero",
+    "a": "Falso",
+    "steps": [
+      "Ambas credenciales están presentes.",
+      "XOR solo es verdadero si exactamente una condición lo es."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿((edad ≥ 18) Y tiene_cédula) O autorizado?",
+    "context": "La plataforma permite acceder si una persona es mayor de edad y tiene cédula, O si cuenta con una autorización especial.",
+    "values": "edad = 16 · tiene_cédula = Verdadero · autorizado = Verdadero",
+    "a": "Verdadero",
+    "steps": [
+      "16 ≥ 18 es falso.",
+      "Falso Y verdadero es falso.",
+      "Falso O verdadero es verdadero: la autorización permite el acceso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿NO ((nota < 0) O (nota > 10))?",
+    "context": "El sistema solo acepta notas entre 0 y 10, inclusive. Se comprueba que la nota NO esté fuera de rango.",
+    "values": "nota = 10.5",
+    "a": "Falso",
+    "steps": [
+      "Primera comparación: 10.5 < 0 = Falso.",
+      "Segunda comparación: 10.5 > 10 = Verdadero.",
+      "Resolvemos el paréntesis: Falso O Verdadero = Verdadero. La nota está fuera del rango permitido.",
+      "Aplicamos la negación: NO Verdadero = Falso.",
+      "Resultado: la condición de nota válida es falsa; la nota no se acepta."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿((A MOD B) == 1) Y NO (C > B)?",
+    "context": "Un algoritmo combina residuo, comparación y negación.",
+    "values": "A = 10 · B = 3 · C = 2",
+    "a": "Verdadero",
+    "steps": [
+      "Calculamos el residuo: 10 MOD 3 = 1.",
+      "Evaluamos la igualdad: 1 == 1 = Verdadero.",
+      "Evaluamos la comparación: C > B equivale a 2 > 3 y da Falso.",
+      "Aplicamos la negación: NO Falso = Verdadero.",
+      "Combinamos los resultados: Verdadero Y Verdadero = Verdadero."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  },
+  {
+    "sec": "logicos",
+    "q": "¿matrícula_activa Y NO suspendido?",
+    "context": "Un estudiante accede al laboratorio si tiene matrícula activa y no está suspendido.",
+    "values": "matrícula_activa = Verdadero · suspendido = Verdadero",
+    "a": "Falso",
+    "steps": [
+      "Matrícula activa es verdadero.",
+      "NO suspendido == NO verdadero == falso.",
+      "Verdadero Y falso es falso."
+    ],
+    "options": [
+      "Verdadero",
+      "Falso"
+    ]
+  }
+];
 const SECTIONS=[["datos", "Tipos de datos"], ["variables", "Variables y constantes"], ["modulo", "Módulo"], ["aritmetica", "Aritmética"], ["relacionales", "Relacionales"], ["logicos", "Lógicos"], ["extra", "Retos"]];
 const state=ITEMS.map(()=>({selection:null,submitted:false,correct:false}));let active=null;
 const el=id=>document.getElementById(id);function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -15,12 +1199,11 @@ function shuffledOptions(item,i){let opts=[...item.options];let seed=(i+17)*7919
 const options=ITEMS.map(shuffledOptions);
 function render(){const done=state.filter(s=>s.submitted&&s.correct).length;el('progress').textContent=`${done} de ${ITEMS.length} acertados`;el('bar').style.width=`${done/ITEMS.length*100}%`;
 if(active===null){el('tabs').className='category-grid';el('tabs').innerHTML=SECTIONS.map(([id,label],idx)=>{const count=ITEMS.filter(x=>x.sec===id).length;const icons=['🔢','🔐','➗','🧮','⚖️','🧠','🚀'];return `<button class="category-tile" data-tab="${id}"><span class="tile-icon">${icons[idx]}</span><span class="tile-title">${escapeHTML(label)}</span><span class="tile-meta">${count} ejercicios <span aria-hidden="true">↗</span></span></button>`}).join('');el('sectionHeading').innerHTML='<p class="welcome">Selecciona una categoría para comenzar a practicar.</p>';el('grid').innerHTML='';return;}
-el('tabs').className='tabs';el('tabs').innerHTML=`<button class="secondary" data-home="true">← Volver a categorías</button>`;const sec=SECTIONS.find(x=>x[0]===active);el('sectionHeading').innerHTML=`<h2 class="section-title">${escapeHTML(sec[1])}</h2><p class="note">Selecciona una alternativa y comprueba tu respuesta.</p>`;
-el('grid').innerHTML=ITEMS.map((item,i)=>({item,i})).filter(({item})=>item.sec===active).map(({item,i})=>{const s=state[i], opts=options[i];const label=sec[1];return `<article class="card"><div class="kicker">Desafío ${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</div>${item.code?`<div class="code-label">Instrucciones del algoritmo</div><pre class="algorithm">${escapeHTML(item.code)}</pre>`:""}${item.context?`<div class="scenario"><strong>Situación:</strong> ${escapeHTML(item.context)}</div><div class="values">${escapeHTML(item.values)}</div>`:""}<div class="question">${escapeHTML(item.q)}</div>${item.sec==='variables'&&CONTEXT_NOTES[item.q]?`<button class="context-alert" data-context="${i}" type="button">⚠ Nota importante: puede ser variable o constante según el contexto. ¿Por qué?</button>`:''}<div class="choices" role="group" aria-label="Alternativas del desafío ${i+1}">${opts.map((opt,j)=>`<button class="choice ${s.selection===opt?'selected':''}" data-select="${i}" data-option="${j}" ${s.submitted?'disabled':''} aria-pressed="${s.selection===opt}"><span class="letter">${String.fromCharCode(65+j)}</span><span>${escapeHTML(opt)}</span></button>`).join('')}</div>${s.submitted?`<div class="feedback ${s.correct?'good':'bad'}" role="status">${s.correct?'✓ ¡Correcto! Has interpretado bien el ejercicio.':'✕ Aún no es correcto. Revisa la solución o vuelve a intentarlo.'}</div><div class="actions">${!s.correct?`<button class="secondary" data-retry="${i}">Intentar de nuevo</button><button class="submit" data-solution="${i}">Ver respuesta explicada</button>`:`<button class="secondary" data-solution="${i}">Ver explicación</button>`}</div>`:`<div class="actions"><button class="submit" data-submit="${i}" ${s.selection===null?'disabled':''}>Comprobar respuesta</button></div>`}</article>`}).join('');}
+el('tabs').className='tabs';el('tabs').innerHTML=`<button class="secondary" data-home="true">← Volver a categorías</button>`;const sec=SECTIONS.find(x=>x[0]===active);el('sectionHeading').innerHTML=`<h2 class="section-title">${escapeHTML(sec[1])}</h2><p class="note">Selecciona una alternativa y comprueba tu respuesta.</p>${active==='aritmetica'?'<p class="note"><strong>Precedencia:</strong> paréntesis → potencias → multiplicación, división y módulo → suma y resta. Dentro de los paréntesis se aplica la misma precedencia. Multiplicación, división y módulo se resuelven de izquierda a derecha; suma y resta también.</p>':''}`;
+el('grid').innerHTML=ITEMS.map((item,i)=>({item,i})).filter(({item})=>item.sec===active).map(({item,i})=>{const s=state[i], opts=options[i];const label=sec[1];return `<article class="card"><div class="kicker">Desafío ${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</div>${item.code?`<div class="code-label">Instrucciones del algoritmo</div><pre class="algorithm">${escapeHTML(item.code)}</pre>`:""}${item.context?`<div class="scenario"><strong>Situación:</strong> ${escapeHTML(item.context)}</div>${item.values?`<div class="values">${escapeHTML(item.values)}</div>`:""}`:""}<div class="question">${escapeHTML(item.q)}</div><div class="choices" role="group" aria-label="Alternativas del desafío ${i+1}">${opts.map((opt,j)=>`<button class="choice ${s.selection===opt?'selected':''}" data-select="${i}" data-option="${j}" ${s.submitted?'disabled':''} aria-pressed="${s.selection===opt}"><span class="letter">${String.fromCharCode(65+j)}</span><span>${escapeHTML(opt)}</span></button>`).join('')}</div>${s.submitted?`<div class="feedback ${s.correct?'good':'bad'}" role="status">${s.correct?'✓ ¡Correcto! Has interpretado bien el ejercicio.':'✕ Aún no es correcto. Revisa la solución o vuelve a intentarlo.'}</div><div class="actions">${!s.correct?`<button class="secondary" data-retry="${i}">Intentar de nuevo</button><button class="submit" data-solution="${i}">Ver respuesta explicada</button>`:`<button class="secondary" data-solution="${i}">Ver explicación</button>`}</div>`:`<div class="actions"><button class="submit" data-submit="${i}" ${s.selection===null?'disabled':''}>Comprobar respuesta</button></div>`}</article>`}).join('');}
 
 el('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b){active=b.dataset.tab;render();window.scrollTo({top:0,behavior:'smooth'});}else if(e.target.closest('[data-home]')){active=null;render();window.scrollTo({top:0,behavior:'smooth'});}});
-el('grid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;let i;if(b.hasAttribute('data-select')){i=+b.dataset.select;if(!state[i].submitted){state[i].selection=options[i][+b.dataset.option];render();}}else if(b.hasAttribute('data-submit')){i=+b.dataset.submit;state[i].submitted=true;state[i].correct=state[i].selection===ITEMS[i].a;render();}else if(b.hasAttribute('data-retry')){i=+b.dataset.retry;state[i]={selection:null,submitted:false,correct:false};render();}else if(b.hasAttribute('data-solution')){showSolution(+b.dataset.solution);}else if(b.hasAttribute('data-context')){showContext(+b.dataset.context);}});
-function showSolution(i){const x=ITEMS[i];el('modalTitle').textContent=x.q;el('modalContext').innerHTML=(x.code?`<pre class="algorithm">${escapeHTML(x.code)}</pre>`:'')+(x.context?`<p><strong>Situación:</strong> ${escapeHTML(x.context)}</p>${x.values?`<p><strong>Datos:</strong> ${escapeHTML(x.values)}</p>`:''}`:'');el('answer').textContent='Respuesta: '+x.a;el('explain').innerHTML=(x.steps||[]).map(step=>`<p>${escapeHTML(step)}</p>`).join('');el('modal').classList.add('show');el('close').focus();}
-function showContext(i){const x=ITEMS[i];el('modalTitle').textContent=x.q;el('modalContext').innerHTML='';el('answer').textContent='Depende del contexto';el('explain').innerHTML=`<p>${escapeHTML(CONTEXT_NOTES[x.q]||'')}</p>`;el('modal').classList.add('show');el('close').focus();}
+el('grid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;let i;if(b.hasAttribute('data-select')){i=+b.dataset.select;if(!state[i].submitted){state[i].selection=options[i][+b.dataset.option];render();}}else if(b.hasAttribute('data-submit')){i=+b.dataset.submit;state[i].submitted=true;state[i].correct=state[i].selection===ITEMS[i].a;render();}else if(b.hasAttribute('data-retry')){i=+b.dataset.retry;state[i]={selection:null,submitted:false,correct:false};render();}else if(b.hasAttribute('data-solution')){showSolution(+b.dataset.solution);}});
+function showSolution(i){const x=ITEMS[i];el('modalTitle').textContent=x.q;el('modalContext').innerHTML=(x.code?`<pre class="algorithm">${escapeHTML(x.code)}</pre>`:'')+(x.context?`<p><strong>Situación:</strong> ${escapeHTML(x.context)}</p>${x.values?`<p><strong>Datos:</strong> ${escapeHTML(x.values)}</p>`:''}`:'');el('answer').textContent='Respuesta: '+x.a;el('explain').innerHTML='<ol>'+(x.steps||[]).map(step=>`<li>${escapeHTML(step)}</li>`).join('')+'</ol>';el('modal').classList.add('show');el('close').focus();}
 function closeModal(){el('modal').classList.remove('show');}el('close').addEventListener('click',closeModal);el('modal').addEventListener('click',e=>{if(e.target===el('modal'))closeModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});render();
 </script></body></html>
