@@ -1,7 +1,17 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laboratorio de lógica · Unidad 3</title><style>
 :root{--bg:#0c101b;--panel:#151d2d;--panel2:#1c2638;--ink:#f3f5fa;--muted:#a6b3c8;--accent:#b8fa69;--violet:#bba8ff;--line:#354057;--good:#91edbc;--bad:#ffb0b7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#263047 0,transparent 42%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.top{max-width:1200px;margin:auto;padding:38px 22px 20px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.19em;font-weight:800;text-transform:uppercase}.hero{display:grid;grid-template-columns:1.5fr .5fr;gap:20px;align-items:center}.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.055em;margin:12px 0}.hero p{max-width:680px;color:var(--muted);line-height:1.6}.orb{width:160px;height:160px;border-radius:45%;margin:auto;background:conic-gradient(from 20deg,var(--accent),#4ce4cb,var(--violet),var(--accent));filter:drop-shadow(0 0 36px #b8fa6955);animation:float 5s ease-in-out infinite,spin 14s linear infinite;position:relative}.orb:after{content:'</>';position:absolute;inset:23px;border-radius:45%;display:grid;place-items:center;background:#151b2b;font-size:30px;font-weight:900;color:var(--accent)}@keyframes float{50%{transform:translateY(-13px) rotate(8deg)}}@keyframes spin{to{filter:hue-rotate(55deg) drop-shadow(0 0 36px #b8fa6955)}}.shell{max-width:1200px;margin:auto;padding:16px 22px 70px}.headrow{display:flex;gap:15px;justify-content:space-between;align-items:center;flex-wrap:wrap}.progress{color:var(--muted);font-size:14px}.bar{height:8px;background:#2a3548;border-radius:20px;overflow:hidden;margin:15px 0 25px}.bar>div{width:0;height:100%;background:linear-gradient(90deg,var(--violet),var(--accent));transition:width .45s}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.tab{background:#1a2333;color:#cdd5e5;border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-weight:700;transition:.2s}.tab:hover{transform:translateY(-2px);border-color:var(--accent)}.tab.active{background:var(--accent);color:#13200a;border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:17px}.card{background:linear-gradient(160deg,#1b2637,#131b29);border:1px solid #354159;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:15px;animation:rise .35s both;transition:transform .2s,border-color .2s}.card:has(.scenario){grid-column:1/-1;max-width:950px;width:100%;margin-inline:auto;padding:28px 32px}.scenario{background:#24334a;border:1px solid #52617c;border-radius:16px;padding:18px 20px;line-height:1.65;font-size:17px;color:#e7eefc}.values{background:#131e30;border:1px solid #586a8b;border-radius:12px;padding:15px 18px;font-size:19px;font-weight:750;color:#b8fa69;line-height:1.7;white-space:normal}.card:has(.scenario) .question{font-size:clamp(20px,2.7vw,27px);font-weight:800}.card:has(.scenario) .choices{grid-template-columns:repeat(2,minmax(0,1fr))}.card:hover{transform:translateY(-3px);border-color:#6a7a91}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.kicker{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--violet);font-weight:800}.question{font-size:18px;line-height:1.5;font-weight:730;white-space:pre-wrap}.choices{display:grid;gap:8px}.choice{display:flex;gap:11px;align-items:center;padding:12px 13px;border:1px solid #3b475e;border-radius:12px;background:#222c3d;color:#f4f6ff;text-align:left;transition:.18s;min-height:47px}.choice:hover:not(:disabled){border-color:var(--violet);background:#30374f}.choice.selected{border-color:var(--accent);background:#314130}.choice:disabled{cursor:default;opacity:.82}.choice .letter{font-weight:900;color:var(--accent);min-width:20px}.submit{border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#18220e;font-weight:850}.submit:disabled{opacity:.4;cursor:not-allowed}.feedback{border-radius:12px;padding:12px;font-size:14px;line-height:1.5}.feedback.good{background:#193e34;color:var(--good)}.feedback.bad{background:#49303b;color:#ffd2d5}.secondary{background:transparent;border:1px solid #7989a0;border-radius:10px;color:var(--ink);padding:10px 13px;font-weight:750}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.modal{position:fixed;inset:0;background:#050a12d9;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(9px)}.modal.show{display:flex}.dialog{background:#1b2636;border:1px solid #64758a;box-shadow:0 35px 100px #0009;border-radius:24px;max-width:650px;width:100%;max-height:88vh;overflow:auto;padding:27px;animation:rise .2s}.dialog h2{font-size:25px;margin:8px 0 12px}.answer{background:#293b33;border:1px solid #4c8e65;padding:15px;border-radius:13px;color:#c8ffd9;font-size:19px;font-weight:800}.explain{line-height:1.7;color:#d6e1f1}.explain li{background:#253144;border-left:3px solid var(--violet);padding:12px 14px;border-radius:5px 12px 12px 5px}.explain ol{padding-left:26px}.explain li{margin:10px 0}.modalfooter{display:flex;justify-content:flex-end;margin-top:18px}.note{font-size:13px;color:var(--muted)}@media(max-width:680px){.card:has(.scenario){padding:19px}.card:has(.scenario) .choices{grid-template-columns:1fr}.scenario{font-size:15px}.values{font-size:16px}.hero{grid-template-columns:1fr}.orb{display:none}.top{padding-top:27px}.dialog{padding:20px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:24px 0 18px}.category-tile{min-height:190px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;padding:25px;background:linear-gradient(140deg,#202d43,#151c2c);border:1px solid #495574;border-radius:24px;color:var(--ink);transition:transform .25s,border-color .25s,box-shadow .25s}.category-tile:hover,.category-tile:focus-visible{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 16px 35px #0005}.tile-icon{font-size:34px}.tile-title{font-size:24px;font-weight:850}.tile-meta{color:var(--accent);font-size:14px;font-weight:750}.welcome{color:var(--muted);font-size:16px;margin:12px 0 24px}.section-title{font-size:30px;margin:15px 0 5px}.tabs{margin:16px 0}.category-grid+.welcome{margin-top:20px}@media(max-width:650px){.category-grid{grid-template-columns:1fr 1fr;gap:10px}.category-tile{min-height:155px;padding:17px}.tile-title{font-size:18px}.tile-icon{font-size:27px}}@media(max-width:400px){.category-grid{grid-template-columns:1fr}}
-.algorithm{white-space:pre-wrap;background:#0a1323;border:1px solid #536784;border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;font:600 1.12rem/1.95 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e8f6dc;overflow-x:auto;margin:10px 0 18px}.code-label{font-weight:700;color:var(--accent);margin-top:16px;font-size:.9rem;letter-spacing:.02em}</style></head><body><header class="top"><div class="hero"><div><div class="eyebrow">Pensamiento computacional / Unidad 3</div><h1>Laboratorio<br>de lógica<span style="color:var(--accent)">.</span></h1></div><div class="orb" aria-hidden="true"></div></div></header><main class="shell"><div class="headrow"><strong>Desafíos interactivos</strong><span class="progress" id="progress" aria-live="polite"></span></div><div class="bar"><div id="bar"></div></div><nav class="tabs" id="tabs" aria-label="Categorías"></nav><div id="sectionHeading"></div><section class="grid" id="grid" aria-label="Ejercicios"></section></main><div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><div class="eyebrow">Solución razonada</div><h2 id="modalTitle"></h2><div id="modalContext" class="note"></div><div class="answer" id="answer"></div><div class="explain" id="explain"></div><div class="modalfooter"><button class="submit" id="close">Entendido</button></div></div></div><script>
+.algorithm{white-space:pre-wrap;background:#0a1323;border:1px solid #536784;border-left:4px solid var(--accent);border-radius:12px;padding:20px 22px;font:600 1.12rem/1.95 ui-monospace,SFMono-Regular,Consolas,monospace;color:#e8f6dc;overflow-x:auto;margin:10px 0 18px}.code-label{font-weight:700;color:var(--accent);margin-top:16px;font-size:.9rem;letter-spacing:.02em}
+.lesson-intro,.lesson-example{grid-column:1/-1;min-width:0;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,#1b2637,#131b29)}
+.lesson-intro{padding:26px;line-height:1.65}.lesson-intro h3{margin:0 0 10px;font-size:20px}.lesson-intro p{color:#cdd8e9;margin:0 0 14px}.lesson-concepts{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px}
+.symbol-key{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;list-style:none;padding:0;margin:18px 0 24px}.symbol-key li{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 12px;border:1px solid var(--line);border-radius:14px;text-align:center;background:#111b2b}.symbol-key li>span:last-child{color:var(--muted);font-size:14px}.symbol-demo{display:block;width:64px;height:34px;background:#253b38;border:2px solid var(--accent);margin:4px 0}.symbol-terminal{border-radius:50%}.symbol-process{border-radius:3px}.symbol-io{transform:skew(-20deg)}.symbol-decision{width:34px;transform:rotate(45deg);background:#302c49;border-color:var(--violet)}
+.lesson-hint{border-left:3px solid var(--violet);padding:14px 18px;background:#253144;border-radius:8px}.lesson-hint code{color:var(--accent)}
+.pseudocode-note{margin:18px 0;border:1px solid #796aa7;border-radius:12px;background:#201f36;overflow:hidden}.pseudocode-note>summary{padding:13px 16px;cursor:pointer;color:#e4dcff;font-weight:750;font-size:15px}.pseudocode-note>summary:hover{background:#302944}.pseudocode-note>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}.pseudocode-note-body{padding:4px 16px 16px;font-size:14px}.pseudocode-note-body p{margin:10px 0}.pseudocode-note-body code{color:var(--accent);overflow-wrap:anywhere}.typing-comparison{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:14px 0}.typing-comparison h4{margin:0 0 8px;color:var(--violet);font-size:14px}.typing-comparison pre{margin:0;padding:12px;background:#0a1323;border:1px solid var(--line);border-radius:9px;overflow-x:auto;font:13px/1.8 ui-monospace,Consolas,monospace}
+.lesson-example{overflow:hidden}.lesson-example>summary{display:grid;grid-template-columns:1fr auto;gap:8px;padding:22px 26px;cursor:pointer;list-style:none}.lesson-example>summary::-webkit-details-marker{display:none}.lesson-example>summary .kicker{grid-column:1}.lesson-example-title{grid-column:1;font-size:23px;font-weight:800}.lesson-toggle{grid-column:2;grid-row:1/3;align-self:center;color:var(--accent);font-size:30px}.lesson-example[open] .lesson-toggle{transform:rotate(180deg)}.lesson-example>summary:hover{background:#243148}.lesson-example>summary:focus-visible,.flow-scroll:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+.lesson-content{padding:0 26px 26px;border-top:1px solid var(--line)}.lesson-description{line-height:1.65;color:#cdd8e9;margin:20px 0}.lesson-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}.lesson-columns h3,.lesson-flow figcaption{font-size:18px;font-weight:800;margin:0 0 14px}.lesson-code{min-width:0}.lesson-code .algorithm{font-size:14px;line-height:1.85;padding:18px;white-space:pre;tab-size:4;margin:0 0 20px}.lesson-code h4{font-size:16px;margin:20px 0 10px;color:var(--violet)}.lesson-tips{padding-left:22px;color:#cdd8e9;line-height:1.7}.lesson-tips li+li{margin-top:10px}.lesson-flow{margin:0;min-width:0}.flow-scroll{overflow-x:auto;background:#0a1323;border:1px solid #536784;border-radius:14px;padding:10px}.flow-scroll svg{display:block;width:100%;min-width:440px;height:auto}.flow-node{stroke-width:1.6}.flow-node rect,.flow-node polygon{fill:#1c3035;stroke:#84bc9d}.flow-terminal rect{fill:#344127;stroke:#b8fa69}.flow-decision polygon{fill:#2c2647;stroke:#bba8ff}.flow-io polygon{fill:#1a3343;stroke:#85c8ec}.flow-node text{fill:#f3f5fa;font:18px ui-sans-serif,system-ui,sans-serif;stroke:none}.flow-arrow{fill:none;stroke:#b8fa69;stroke-width:2;stroke-linejoin:round}.flow-label{fill:#b8fa69;font:700 18px ui-sans-serif,system-ui,sans-serif;paint-order:stroke;stroke:#0a1323;stroke-width:5px;stroke-linejoin:round}.lesson-trace{background:#22372e;border:1px solid #4c8e65;padding:18px;border-radius:14px;line-height:1.7;margin-top:22px}.lesson-trace strong{color:#c8ffd9}.lesson-trace p{margin:6px 0 0}
+@media(max-width:900px){.lesson-columns{grid-template-columns:1fr}.lesson-flow{max-width:640px;width:100%;margin-inline:auto}.symbol-key{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.lesson-concepts{grid-template-columns:1fr;gap:12px}.lesson-intro{padding:19px}.lesson-example>summary{padding:18px}.lesson-example-title{font-size:20px}.lesson-content{padding:0 16px 18px}.lesson-code .algorithm{font-size:13px;padding:12px}.lesson-trace{padding:14px}.symbol-key{gap:10px}.symbol-key li{padding:14px 8px}}
+</style></head><body><header class="top"><div class="hero"><div><div class="eyebrow">Pensamiento computacional / Unidad 3</div><h1>Laboratorio<br>de lógica<span style="color:var(--accent)">.</span></h1></div><div class="orb" aria-hidden="true"></div></div></header><main class="shell"><div class="headrow"><strong>Desafíos interactivos</strong><span class="progress" id="progress" aria-live="polite"></span></div><div class="bar"><div id="bar"></div></div><nav class="tabs" id="tabs" aria-label="Categorías"></nav><div id="sectionHeading"></div><section class="grid" id="grid" aria-label="Ejercicios"></section></main><div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><div class="eyebrow">Solución razonada</div><h2 id="modalTitle"></h2><div id="modalContext" class="note"></div><div class="answer" id="answer"></div><div class="explain" id="explain"></div><div class="modalfooter"><button class="submit" id="close">Entendido</button></div></div></div><script>
 const ITEMS=[
   {
     "sec": "datos",
@@ -623,6 +633,55 @@ const ITEMS=[
     ]
   },
   {
+    "sec": "aritmetica",
+    "q": "2 ** 2 ** 2",
+    "a": "16",
+    "steps": [
+      "** representa una potencia. Las potencias encadenadas se agrupan de derecha a izquierda: 2 ** (2 ** 2).",
+      "Potencia de la derecha: 2 ** 2 = 4. Queda: 2 ** 4.",
+      "Potencia restante: 2 ** 4 = 16. Resultado final: 16."
+    ],
+    "options": [
+      "16",
+      "8",
+      "4",
+      "32"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "2 ** 3 ** 2",
+    "a": "512",
+    "steps": [
+      "Las potencias encadenadas se agrupan de derecha a izquierda: 2 ** (3 ** 2).",
+      "Potencia de la derecha: 3 ** 2 = 9. Queda: 2 ** 9.",
+      "Potencia restante: 2 ** 9 = 512. Resultado final: 512.",
+      "Si se agrupara (2 ** 3) ** 2, el resultado sería 64. Esa es otra expresión: los paréntesis cambian el orden."
+    ],
+    "options": [
+      "512",
+      "64",
+      "36",
+      "256"
+    ]
+  },
+  {
+    "sec": "aritmetica",
+    "q": "(2 ** 3) ** 2",
+    "a": "64",
+    "steps": [
+      "Los paréntesis tienen prioridad. Primero resolvemos la potencia dentro de ellos: 2 ** 3 = 8. Queda: 8 ** 2.",
+      "Potencia restante: 8 ** 2 = 64. Resultado final: 64.",
+      "Aquí los paréntesis obligan a calcular primero 2 ** 3; por eso el resultado difiere de 2 ** 3 ** 2, que es 512."
+    ],
+    "options": [
+      "64",
+      "512",
+      "16",
+      "32"
+    ]
+  },
+  {
     "sec": "extra",
     "q": "¿Cuál es el valor final de edad?",
     "a": "13",
@@ -1192,14 +1251,214 @@ const ITEMS=[
     ]
   }
 ];
-const SECTIONS=[["datos", "Tipos de datos"], ["variables", "Variables y constantes"], ["modulo", "Módulo"], ["aritmetica", "Aritmética"], ["relacionales", "Relacionales"], ["logicos", "Lógicos"], ["extra", "Retos"]];
+const SECTIONS=[["datos", "Tipos de datos"], ["variables", "Variables y constantes"], ["modulo", "Módulo"], ["aritmetica", "Aritmética"], ["relacionales", "Relacionales"], ["logicos", "Lógicos"], ["extra", "Retos"], ["pseudocodigo", "Pseudocódigo y flujogramas"]];
+const ALGORITHM_EXAMPLES=[
+  {
+    id:'promedio', title:'Promedio de dos números', structure:'Secuencia',
+    description:'Lee dos números, calcula su promedio y muestra el resultado. Las instrucciones se ejecutan en orden.',
+    code:`Algoritmo Promedio
+    Definir numero1, numero2, resultado_promedio Como Real
+
+    Escribir "Ingrese el valor del primer número"
+    Leer numero1
+    Escribir "Ingrese el valor del segundo número"
+    Leer numero2
+
+    resultado_promedio <- (numero1 + numero2) / 2
+    Escribir "El promedio es: ", resultado_promedio
+FinAlgoritmo`,
+    tips:['Leer guarda el dato ingresado en una variable; Escribir muestra un mensaje o resultado.', 'Los paréntesis hacen que primero se sumen los números y después se divida entre 2.'],
+    trace:'Si numero1 = 8 y numero2 = 6: primero 8 + 6 = 14; después 14 / 2 = 7. Se muestra: El promedio es: 7.',
+    height:900,
+    nodes:[
+      ['start','terminal',320,20,180,44,['Inicio: Promedio']],
+      ['define','process',320,95,450,70,['Definir numero1, numero2 y','resultado_promedio Como Real']],
+      ['prompt1','io',320,200,440,58,['Mostrar: Ingrese el primer número']],
+      ['read1','io',320,295,270,56,['Leer numero1']],
+      ['prompt2','io',320,390,440,58,['Mostrar: Ingrese el segundo número']],
+      ['read2','io',320,485,270,56,['Leer numero2']],
+      ['calc','process',320,580,450,78,['resultado_promedio ←','(numero1 + numero2) / 2']],
+      ['output','io',320,700,440,70,['Mostrar: El promedio es:','resultado_promedio']],
+      ['end','terminal',320,815,180,44,['Fin']]
+    ],
+    edges:[['M320 64 V95'],['M320 165 V200'],['M320 258 V295'],['M320 351 V390'],['M320 448 V485'],['M320 541 V580'],['M320 658 V700'],['M320 770 V815']]
+  },
+  {
+    id:'edades', title:'Clasificar una edad', structure:'Decisiones',
+    description:'Según la regla de este ejercicio: niño si edad < 12; adolescente si 12 ≤ edad < 18; adulto si edad ≥ 18. Suponemos una edad entera no negativa.',
+    code:`Algoritmo clasificar_edades
+    Definir edad Como Entero
+    Escribir "Ingrese la edad para clasificarla"
+    Leer edad
+
+    Si edad < 12 Entonces
+        Escribir "Niño"
+    SiNo
+        Si edad < 18 Entonces
+            Escribir "Adolescente"
+        SiNo
+            Escribir "Adulto"
+        FinSi
+    FinSi
+FinAlgoritmo`,
+    tips:['Si...Entonces elige un camino cuando la condición es verdadera; SiNo indica el camino falso.', 'La segunda comparación solo se realiza si edad < 12 fue falso. Por eso basta comprobar edad < 18.', 'A los 18 años, edad < 18 es falso: se muestra Adulto. Usar ≤ 18 incluiría incorrectamente los 18 en Adolescente.'],
+    trace:'Con edad = 15: 15 < 12 → Falso; 15 < 18 → Verdadero. Se muestra Adolescente. Con edad = 18, ambas comparaciones son falsas y se muestra Adulto.',
+    height:960,
+    nodes:[
+      ['start','terminal',300,20,250,44,['Inicio: clasificar_edades']],
+      ['define','process',300,95,350,56,['Definir edad Como Entero']],
+      ['prompt','io',300,190,440,58,['Mostrar: Ingrese la edad']],
+      ['read','io',300,280,230,56,['Leer edad']],
+      ['child','decision',300,380,200,100,['¿edad < 12?']],
+      ['outChild','io',520,540,180,58,['Mostrar: Niño']],
+      ['teen','decision',240,555,200,100,['¿edad < 18?']],
+      ['outAdult','io',115,740,190,58,['Mostrar: Adulto']],
+      ['outTeen','io',390,740,230,58,['Mostrar: Adolescente']],
+      ['end','terminal',300,875,160,44,['Fin']]
+    ],
+    edges:[['M300 64 V95'],['M300 151 V190'],['M300 248 V280'],['M300 336 V380'],
+      ['M400 430 H520 V540','Sí',455,414],['M300 480 V515 H240 V555','No',321,511],
+      ['M140 605 H115 V740','No',100,640],['M340 605 H390 V740','Sí',365,640],
+      ['M115 798 V840 H300 V875'],['M390 798 V840 H300'],['M520 598 V840 H390']]
+  },
+  {
+    id:'positivos', title:'Contar números positivos', structure:'Ciclo Mientras',
+    description:'Lee números hasta recibir 0. Cuenta únicamente los mayores que cero; los negativos no aumentan el contador.',
+    code:`Algoritmo contador_numeros_positivos
+    Definir valor1 Como Real
+    Definir contador Como Entero
+    contador <- 0
+
+    Escribir "Ingrese un número (0 para finalizar):"
+    Leer valor1
+
+    Mientras valor1 <> 0 Hacer
+        Si valor1 > 0 Entonces
+            contador <- contador + 1
+        FinSi
+        Escribir "Ingrese otro número (0 para finalizar):"
+        Leer valor1
+    FinMientras
+
+    Escribir "Cantidad de números positivos: ", contador
+FinAlgoritmo`,
+    tips:['El contador comienza en 0 y aumenta de uno en uno cada vez que se ingresa un positivo.', 'El 0 es el valor de salida: termina el ciclo y no se cuenta. <> significa diferente de.', 'Es necesario leer otro número dentro del ciclo para poder actualizar la condición. Si el primer dato es 0, el cuerpo del ciclo no se ejecuta.'],
+    trace:'Entradas: 4, −2, 7, 0. El contador pasa de 0 a 1 con el 4; sigue en 1 con el −2; pasa a 2 con el 7; el 0 termina el ciclo. Se muestra: 2 positivos.',
+    height:1320,
+    nodes:[
+      ['start','terminal',300,20,250,44,['Inicio: contar positivos']],
+      ['define','process',300,95,400,74,['Definir valor1 Como Real','Definir contador Como Entero']],
+      ['init','process',300,205,290,56,['contador ← 0']],
+      ['prompt','io',300,300,440,64,['Mostrar: Ingrese un número','(0 para finalizar)']],
+      ['read','io',300,405,250,56,['Leer valor1']],
+      ['continue','decision',300,515,220,100,['¿valor1 ≠ 0?']],
+      ['positive','decision',300,685,200,100,['¿valor1 > 0?']],
+      ['increment','process',450,825,310,58,['contador ← contador + 1']],
+      ['promptAgain','io',300,955,440,64,['Mostrar: Ingrese otro número','(0 para finalizar)']],
+      ['readAgain','io',300,1060,250,56,['Leer valor1']],
+      ['output','io',300,1175,440,64,['Mostrar: Cantidad de positivos:','contador']],
+      ['end','terminal',300,1270,160,40,['Fin']]
+    ],
+    edges:[['M300 64 V95'],['M300 169 V205'],['M300 261 V300'],['M300 364 V405'],['M300 461 V515'],
+      ['M300 615 V685','Sí',323,655],['M410 565 H620 V1150 H300 V1175','No',570,548],
+      ['M400 735 H450 V825','Sí',442,720],['M200 735 H150 V920 H300 V955','No',165,720],
+      ['M450 883 V920 H300'],['M300 1019 V1060'],['M300 1116 V1130 H35 V485 H300 V515'],['M300 1239 V1270']]
+  },
+  {
+    id:'suma', title:'Sumar del 1 al 100 y mostrar los pares', structure:'Ciclo Para',
+    description:'Recorre los números del 1 al 100. Suma todos los números, pero muestra durante el recorrido solo los que son pares.',
+    code:`Algoritmo suma_numeros
+    Definir suma, contador Como Entero
+    suma <- 0
+
+    Para contador <- 1 Hasta 100 Con Paso 1 Hacer
+        suma <- suma + contador
+        Si contador MOD 2 == 0 Entonces
+            Escribir contador
+        FinSi
+    FinPara
+
+    Escribir "La suma de los números del 1 al 100 es: ", suma
+FinAlgoritmo`,
+    tips:['Para repite las instrucciones desde 1 hasta 100, inclusive, y aumenta contador en 1 en cada vuelta.', 'suma es un acumulador: comienza en 0 y añade el valor de contador en cada iteración.', 'MOD 2 == 0 identifica los pares. La suma está fuera del Si, así que incluye tanto pares como impares.', 'En el flujograma, el inicio, la condición y el incremento del Para se muestran por separado para entender el ciclo.'],
+    trace:'Primera vuelta: suma = 0 + 1 = 1, no se muestra el 1. Segunda: suma = 1 + 2 = 3, se muestra el 2. Al terminar se han mostrado 2, 4, …, 100 y la suma total es 5050.',
+    height:1210,
+    nodes:[
+      ['start','terminal',300,20,250,44,['Inicio: suma_numeros']],
+      ['define','process',300,95,430,60,['Definir suma, contador Como Entero']],
+      ['init','process',300,195,250,56,['suma ← 0']],
+      ['counter','process',300,290,250,56,['contador ← 1']],
+      ['continue','decision',300,400,220,100,['¿contador ≤ 100?']],
+      ['accumulate','process',300,565,370,58,['suma ← suma + contador']],
+      ['even','decision',300,685,250,110,['¿contador MOD 2 == 0?']],
+      ['outputEven','io',470,855,280,58,['Mostrar contador']],
+      ['increment','process',300,965,330,58,['contador ← contador + 1']],
+      ['output','io',300,1080,440,64,['Mostrar: La suma del 1 al 100 es:','suma']],
+      ['end','terminal',300,1170,160,40,['Fin']]
+    ],
+    edges:[['M300 64 V95'],['M300 155 V195'],['M300 251 V290'],['M300 346 V400'],
+      ['M300 500 V565','Sí',324,535],['M410 450 H625 V1065 H300 V1080','No',570,433],
+      ['M300 623 V685'],['M425 740 H470 V855','Sí',470,724],['M175 740 H140 V940 H300 V965','No',151,724],
+      ['M470 913 V940 H300'],['M300 1023 V1040 H35 V370 H300 V400'],['M300 1144 V1170']]
+  }
+];
+
+// Diagramas vectoriales incluidos en el HTML: funcionan sin bibliotecas externas.
+function flowchart(example){
+  const prefix='flow-'+example.id;
+  const nodes=example.nodes.map(([id,type,cx,y,w,h,lines])=>{
+    const x=cx-w/2,cy=y+h/2;
+    let shape;
+    if(type==='decision')shape=`<polygon points="${cx},${y} ${x+w},${cy} ${cx},${y+h} ${x},${cy}"/>`;
+    else if(type==='io')shape=`<polygon points="${x+18},${y} ${x+w},${y} ${x+w-18},${y+h} ${x},${y+h}"/>`;
+    else shape=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${type==='terminal'?h/2:5}"/>`;
+    const text=lines.map((line,i)=>`<tspan x="${cx}" y="${cy-(lines.length-1)*13+i*26+6}">${escapeHTML(line)}</tspan>`).join('');
+    return `<g class="flow-node flow-${type}">${shape}<text text-anchor="middle">${text}</text></g>`;
+  }).join('');
+  const edges=example.edges.map(([d,label,x,y])=>`<path class="flow-arrow" d="${d}" marker-end="url(#${prefix}-arrow)"/>${label?`<text class="flow-label" x="${x}" y="${y}" text-anchor="middle">${escapeHTML(label)}</text>`:''}`).join('');
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 ${example.height+15}" role="img" aria-labelledby="${prefix}-title ${prefix}-desc"><title id="${prefix}-title">Flujograma: ${escapeHTML(example.title)}</title><desc id="${prefix}-desc">${escapeHTML(example.description)} Las flechas indican el orden. Las decisiones tienen caminos Sí y No. El pseudocódigo contiguo describe las mismas instrucciones.</desc><defs><marker id="${prefix}-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#b8fa69"/></marker></defs>${edges}${nodes}</svg>`;
+}
+
+function renderAlgorithmLesson(){
+  el('sectionHeading').innerHTML='<h2 class="section-title">Pseudocódigo y flujogramas</h2><p class="welcome">Dos maneras de representar el mismo algoritmo: una con instrucciones y otra con símbolos conectados.</p>';
+  const intro=`<article class="lesson-intro">
+    <div class="lesson-concepts"><div><h3>¿Qué es el pseudocódigo?</h3><p>Es una descripción ordenada de los pasos para resolver un problema. Usa palabras fáciles de leer; aquí seguimos el estilo de PSeInt.</p></div><div><h3>¿Qué es un flujograma?</h3><p>Es la representación gráfica de esos mismos pasos. Sigue las flechas desde el inicio hasta el fin y observa dónde se decide o se repite.</p></div></div>
+    <h3>Reconoce los símbolos</h3>
+    <ul class="symbol-key"><li><span class="symbol-demo symbol-terminal" aria-hidden="true"></span><strong>Óvalo</strong><span>Inicio y fin.</span></li><li><span class="symbol-demo symbol-process" aria-hidden="true"></span><strong>Rectángulo</strong><span>Proceso: definir, calcular o asignar.</span></li><li><span class="symbol-demo symbol-io" aria-hidden="true"></span><strong>Paralelogramo</strong><span>Entrada o salida: Leer y Escribir.</span></li><li><span class="symbol-demo symbol-decision" aria-hidden="true"></span><strong>Rombo</strong><span>Condición: caminos Sí y No.</span></li></ul>
+    <p class="lesson-hint"><strong>Detalles clave:</strong> las flechas marcan la dirección. <code>&lt;-</code> (←) asigna un valor; <code>==</code> compara si dos valores son iguales en una condición. <code>Definir</code> indica el tipo de dato. La sangría agrupa instrucciones y <code>//</code> introduce un comentario que no se ejecuta.</p>
+    <details class="pseudocode-note">
+      <summary>¿Cómo se aplica el pseudocódigo en un lenguaje como Python?</summary>
+      <div class="pseudocode-note-body">
+        <p><strong>La lógica se conserva.</strong> Las variables, los cálculos, las decisiones y los ciclos sirven de base para programar. Al pasar a un lenguaje concreto, cambia la forma de escribir las instrucciones. El pseudocódigo no tiene una única sintaxis universal; aquí usamos el estilo de PSeInt.</p>
+        <p><strong>En Python no escribimos «Definir edad Como Entero».</strong> Python tiene tipado dinámico: los valores tienen un tipo y los nombres de las variables se vinculan a esos valores sin declarar antes un tipo fijo. En <code>edad = 18</code>, el valor es un entero (<code>int</code>).</p>
+        <div class="typing-comparison">
+          <div><h4>Pseudocódigo</h4><pre><code>Definir edad Como Entero
+edad &lt;- 18
+Escribir edad</code></pre></div>
+          <div><h4>Python</h4><pre><code>edad = 18
+print(edad)</code></pre></div>
+        </div>
+        <p>Una variable puede vincularse después a un valor de otro tipo. Eso no convierte automáticamente los datos: <code>input()</code> devuelve texto; para leer una edad entera usamos <code>edad = int(input("Edad: "))</code>, suponiendo una entrada válida.</p>
+        <p><strong>Recuerda:</strong> en Python, <code>=</code> asigna y <code>==</code> compara. Los bloques de <code>if</code>, <code>while</code> y <code>for</code> se delimitan con sangría; no se escribe <code>FinSi</code> ni <code>FinMientras</code>.</p>
+      </div>
+    </details>
+    <p class="note">Primero comprende la entrada, el proceso y la salida. Después revisa la secuencia, las decisiones o los ciclos. Abre cada ejemplo para comparar su código y flujograma.</p>
+  </article>`;
+  el('grid').innerHTML=intro+ALGORITHM_EXAMPLES.map((example,i)=>`<details class="lesson-example" ${i===0?'open':''}>
+    <summary><span class="kicker">Ejemplo ${i+1} · ${escapeHTML(example.structure)}</span><span class="lesson-example-title">${escapeHTML(example.title)}</span><span class="lesson-toggle" aria-hidden="true">⌄</span></summary>
+    <div class="lesson-content"><p class="lesson-description">${escapeHTML(example.description)}</p>
+    <div class="lesson-columns"><section class="lesson-code" aria-labelledby="code-${example.id}"><h3 id="code-${example.id}">Pseudocódigo</h3><pre class="algorithm"><code>${escapeHTML(example.code)}</code></pre><h4>Fíjate en esto</h4><ul class="lesson-tips">${example.tips.map(tip=>`<li>${escapeHTML(tip)}</li>`).join('')}</ul></section>
+    <figure class="lesson-flow"><figcaption>Flujograma · ${escapeHTML(example.structure)}</figcaption><div class="flow-scroll" tabindex="0" role="region" aria-label="Flujograma de ${escapeHTML(example.title)}; desplaza horizontalmente si es necesario">${flowchart(example)}</div></figure></div>
+    <div class="lesson-trace"><strong>Prueba de escritorio</strong><p>${escapeHTML(example.trace)}</p></div></div>
+  </details>`).join('');
+}
 const state=ITEMS.map(()=>({selection:null,submitted:false,correct:false}));let active=null;
 const el=id=>document.getElementById(id);function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function shuffledOptions(item,i){let opts=[...item.options];let seed=(i+17)*7919;for(let j=opts.length-1;j>0;j--){seed=(seed*16807)%2147483647;let k=seed%(j+1);[opts[j],opts[k]]=[opts[k],opts[j]];}return opts;}
 const options=ITEMS.map(shuffledOptions);
 function render(){const done=state.filter(s=>s.submitted&&s.correct).length;el('progress').textContent=`${done} de ${ITEMS.length} acertados`;el('bar').style.width=`${done/ITEMS.length*100}%`;
-if(active===null){el('tabs').className='category-grid';el('tabs').innerHTML=SECTIONS.map(([id,label],idx)=>{const count=ITEMS.filter(x=>x.sec===id).length;const icons=['🔢','🔐','➗','🧮','⚖️','🧠','🚀'];return `<button class="category-tile" data-tab="${id}"><span class="tile-icon">${icons[idx]}</span><span class="tile-title">${escapeHTML(label)}</span><span class="tile-meta">${count} ejercicios <span aria-hidden="true">↗</span></span></button>`}).join('');el('sectionHeading').innerHTML='<p class="welcome">Selecciona una categoría para comenzar a practicar.</p>';el('grid').innerHTML='';return;}
-el('tabs').className='tabs';el('tabs').innerHTML=`<button class="secondary" data-home="true">← Volver a categorías</button>`;const sec=SECTIONS.find(x=>x[0]===active);el('sectionHeading').innerHTML=`<h2 class="section-title">${escapeHTML(sec[1])}</h2><p class="note">Selecciona una alternativa y comprueba tu respuesta.</p>${active==='aritmetica'?'<p class="note"><strong>Precedencia:</strong> paréntesis → potencias → multiplicación, división y módulo → suma y resta. Dentro de los paréntesis se aplica la misma precedencia. Multiplicación, división y módulo se resuelven de izquierda a derecha; suma y resta también.</p>':''}`;
+if(active===null){el('tabs').className='category-grid';el('tabs').innerHTML=SECTIONS.map(([id,label],idx)=>{const count=ITEMS.filter(x=>x.sec===id).length;const icons=['🔢','🔐','➗','🧮','⚖️','🧠','🚀','📝'];return `<button class="category-tile" data-tab="${id}"><span class="tile-icon">${icons[idx]}</span><span class="tile-title">${escapeHTML(label)}</span><span class="tile-meta">${id==='pseudocodigo'?ALGORITHM_EXAMPLES.length+' ejemplos guiados':count+' ejercicios'} <span aria-hidden="true">↗</span></span></button>`}).join('');el('sectionHeading').innerHTML='<p class="welcome">Selecciona una categoría para comenzar a practicar.</p>';el('grid').innerHTML='';return;}
+el('tabs').className='tabs';el('tabs').innerHTML=`<button class="secondary" data-home="true">← Volver a categorías</button>`;if(active==='pseudocodigo'){renderAlgorithmLesson();return;}const sec=SECTIONS.find(x=>x[0]===active);el('sectionHeading').innerHTML=`<h2 class="section-title">${escapeHTML(sec[1])}</h2><p class="note">Selecciona una alternativa y comprueba tu respuesta.</p>${active==='aritmetica'?'<p class="note"><strong>Precedencia:</strong> paréntesis → potencias → multiplicación, división y módulo → suma y resta. Dentro de los paréntesis se aplica la misma precedencia. Multiplicación, división y módulo se resuelven de izquierda a derecha; suma y resta también. <strong>Potencias:</strong> ** significa elevar a una potencia; las potencias encadenadas se agrupan de derecha a izquierda, salvo que los paréntesis indiquen otro orden.</p>':''}`;
 el('grid').innerHTML=ITEMS.map((item,i)=>({item,i})).filter(({item})=>item.sec===active).map(({item,i})=>{const s=state[i], opts=options[i];const label=sec[1];return `<article class="card"><div class="kicker">Desafío ${String(i+1).padStart(2,'0')} · ${escapeHTML(label)}</div>${item.code?`<div class="code-label">Instrucciones del algoritmo</div><pre class="algorithm">${escapeHTML(item.code)}</pre>`:""}${item.context?`<div class="scenario"><strong>Situación:</strong> ${escapeHTML(item.context)}</div>${item.values?`<div class="values">${escapeHTML(item.values)}</div>`:""}`:""}<div class="question">${escapeHTML(item.q)}</div><div class="choices" role="group" aria-label="Alternativas del desafío ${i+1}">${opts.map((opt,j)=>`<button class="choice ${s.selection===opt?'selected':''}" data-select="${i}" data-option="${j}" ${s.submitted?'disabled':''} aria-pressed="${s.selection===opt}"><span class="letter">${String.fromCharCode(65+j)}</span><span>${escapeHTML(opt)}</span></button>`).join('')}</div>${s.submitted?`<div class="feedback ${s.correct?'good':'bad'}" role="status">${s.correct?'✓ ¡Correcto! Has interpretado bien el ejercicio.':'✕ Aún no es correcto. Revisa la solución o vuelve a intentarlo.'}</div><div class="actions">${!s.correct?`<button class="secondary" data-retry="${i}">Intentar de nuevo</button><button class="submit" data-solution="${i}">Ver respuesta explicada</button>`:`<button class="secondary" data-solution="${i}">Ver explicación</button>`}</div>`:`<div class="actions"><button class="submit" data-submit="${i}" ${s.selection===null?'disabled':''}>Comprobar respuesta</button></div>`}</article>`}).join('');}
 
 el('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b){active=b.dataset.tab;render();window.scrollTo({top:0,behavior:'smooth'});}else if(e.target.closest('[data-home]')){active=null;render();window.scrollTo({top:0,behavior:'smooth'});}});
