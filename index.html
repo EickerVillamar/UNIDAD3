@@ -822,6 +822,181 @@ const ITEMS=[
     "code": "edad ← 13\nsuspendido ← Verdadero"
   },
   {
+    "sec": "extra",
+    "q": "¿Qué mensaje muestra el algoritmo si se ingresa Ana?",
+    "a": "Hola, Ana",
+    "context": "Practica entrada y salida: Leer recibe el nombre que escribe el usuario y Escribir muestra el saludo. El usuario ingresa Ana.",
+    "code": "Algoritmo saludo\n    Definir nombre Como Cadena\n    Leer nombre\n    Escribir \"Hola, \", nombre\nFinAlgoritmo",
+    "options": [
+      "Hola, Ana",
+      "Hola, nombre",
+      "Ana",
+      "nombre"
+    ],
+    "steps": [
+      "Definir nombre Como Cadena indica que nombre almacenará texto.",
+      "Leer nombre guarda el dato ingresado por el usuario: Ana.",
+      "Escribir muestra el texto \"Hola, \" y después el contenido de nombre.",
+      "El mensaje mostrado es: Hola, Ana. La palabra nombre no se imprime porque no está entre comillas."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué valor de copia se muestra al final?",
+    "a": "3",
+    "context": "Sigue las asignaciones en orden. Copiar un número a otra variable no hace que ambas se actualicen juntas.",
+    "code": "Algoritmo copiar_numero\n    Definir numero, copia Como Entero\n    numero <- 3\n    copia <- numero\n    numero <- 8\n    Escribir copia\nFinAlgoritmo",
+    "options": [
+      "3",
+      "8",
+      "11",
+      "0"
+    ],
+    "steps": [
+      "numero <- 3 guarda el valor 3 en numero.",
+      "copia <- numero copia el valor actual de numero: copia almacena 3.",
+      "numero <- 8 cambia numero a 8; no se vuelve a asignar ningún valor a copia.",
+      "Escribir copia muestra 3, porque copia conserva el valor recibido antes del cambio."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué mensaje se muestra si la nota ingresada es 7?",
+    "a": "Aprobado",
+    "context": "En este ejercicio se aprueba con una nota de 7 o más. El usuario ingresa 7. Observa qué camino del Si se ejecuta.",
+    "code": "Algoritmo revisar_nota\n    Definir nota Como Real\n    Leer nota\n    Si nota >= 7 Entonces\n        Escribir \"Aprobado\"\n    SiNo\n        Escribir \"Pendiente\"\n    FinSi\nFinAlgoritmo",
+    "options": [
+      "Aprobado",
+      "Pendiente",
+      "Se muestran ambos mensajes",
+      "No se muestra ningún mensaje"
+    ],
+    "steps": [
+      "Leer nota guarda el valor ingresado: 7.",
+      "Evaluamos la condición: 7 >= 7 es Verdadero, porque >= incluye la igualdad.",
+      "Se ejecuta el bloque Entonces y se muestra Aprobado.",
+      "El bloque SiNo no se ejecuta. Solo se sigue uno de los dos caminos."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué mensaje se muestra si el número ingresado es 9?",
+    "a": "Impar",
+    "context": "Un número entero es par si el residuo al dividirlo entre 2 es cero. El usuario ingresa 9.",
+    "code": "Algoritmo par_o_impar\n    Definir numero Como Entero\n    Leer numero\n    Si numero MOD 2 == 0 Entonces\n        Escribir \"Par\"\n    SiNo\n        Escribir \"Impar\"\n    FinSi\nFinAlgoritmo",
+    "options": [
+      "Impar",
+      "Par",
+      "0",
+      "Se muestran ambos mensajes"
+    ],
+    "steps": [
+      "Leer numero guarda el valor ingresado: 9.",
+      "Calculamos el módulo: 9 MOD 2 = 1, porque sobra 1 al dividir 9 entre 2.",
+      "Comparamos el residuo con cero: 1 == 0 es Falso.",
+      "Se ejecuta el bloque SiNo y se muestra Impar. El bloque Entonces no se ejecuta."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué números muestra el ciclo Para, en orden?",
+    "a": "1, 2, 3",
+    "context": "El ciclo avanza de uno en uno e incluye el valor final. Cada Escribir muestra un número en una línea; las opciones resumen esas líneas con comas.",
+    "code": "Algoritmo contar_tres\n    Definir contador Como Entero\n    Para contador <- 1 Hasta 3 Con Paso 1 Hacer\n        Escribir contador\n    FinPara\nFinAlgoritmo",
+    "options": [
+      "1, 2, 3",
+      "0, 1, 2",
+      "1, 2",
+      "3, 2, 1"
+    ],
+    "steps": [
+      "Primera vuelta: contador vale 1 y Escribir muestra 1.",
+      "Segunda vuelta: contador aumenta a 2 y Escribir muestra 2.",
+      "Tercera vuelta: contador aumenta a 3 y Escribir muestra 3.",
+      "Ya se recorrió el valor final 3. El ciclo termina sin ejecutar una vuelta con 4.",
+      "Los números mostrados, en orden, son 1, 2 y 3."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué valor de contador se muestra después del Mientras?",
+    "a": "4",
+    "context": "La condición de Mientras se comprueba antes de cada vuelta. Escribir está fuera del ciclo, así que solo muestra el valor que queda al terminar.",
+    "code": "Algoritmo avanzar_contador\n    Definir contador Como Entero\n    contador <- 1\n    Mientras contador <= 3 Hacer\n        contador <- contador + 1\n    FinMientras\n    Escribir contador\nFinAlgoritmo",
+    "options": [
+      "4",
+      "3",
+      "1",
+      "0"
+    ],
+    "steps": [
+      "Asignación inicial: contador almacena 1.",
+      "Primera comprobación: 1 <= 3 es Verdadero. Se ejecuta la suma 1 + 1 y contador pasa a 2.",
+      "Segunda comprobación: 2 <= 3 es Verdadero. Se ejecuta la suma 2 + 1 y contador pasa a 3.",
+      "Tercera comprobación: 3 <= 3 es Verdadero. Se ejecuta la suma 3 + 1 y contador pasa a 4.",
+      "Cuarta comprobación: 4 <= 3 es Falso. El ciclo termina sin volver a sumar.",
+      "Escribir contador está después de FinMientras y muestra una sola vez el valor final: 4."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué valor de cambio se muestra si el pago ingresado es 10?",
+    "a": "4",
+    "context": "Una compra cuesta 6. El usuario ingresa 10 como pago. Sigue la lectura, el cálculo y la salida.",
+    "code": "Algoritmo calcular_cambio\n    Definir precio, pago, cambio Como Real\n    precio <- 6\n    Leer pago\n    cambio <- pago - precio\n    Escribir cambio\nFinAlgoritmo",
+    "options": [
+      "4",
+      "6",
+      "10",
+      "16"
+    ],
+    "steps": [
+      "La instrucción precio <- 6 guarda el costo de la compra: 6.",
+      "Leer pago guarda el valor que ingresa el usuario: 10.",
+      "Restamos: pago - precio equivale a 10 - 6 = 4.",
+      "La asignación guarda 4 en cambio. Escribir cambio muestra 4."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué mensaje se muestra si hay 3 libros disponibles?",
+    "a": "Hay libros",
+    "context": "El usuario ingresa 3. El algoritmo comprueba si la cantidad es cero; observa el uso de == para comparar.",
+    "code": "Algoritmo revisar_libros\n    Definir cantidad Como Entero\n    Leer cantidad\n    Si cantidad == 0 Entonces\n        Escribir \"Sin libros\"\n    SiNo\n        Escribir \"Hay libros\"\n    FinSi\nFinAlgoritmo",
+    "options": [
+      "Hay libros",
+      "Sin libros",
+      "3",
+      "Se muestran ambos mensajes"
+    ],
+    "steps": [
+      "Leer cantidad guarda el dato ingresado: 3.",
+      "Evaluamos la igualdad: 3 == 0 es Falso, porque los valores son diferentes.",
+      "Como la condición es falsa, no se ejecuta el bloque Entonces.",
+      "Se ejecuta el bloque SiNo y se muestra Hay libros."
+    ]
+  },
+  {
+    "sec": "extra",
+    "q": "¿Qué valor de suma se muestra después del ciclo?",
+    "a": "6",
+    "context": "El ciclo recorre del 1 al 3 y acumula cada número. Escribir está después de FinPara y muestra un único resultado.",
+    "code": "Algoritmo sumar_tres\n    Definir suma, contador Como Entero\n    suma <- 0\n    Para contador <- 1 Hasta 3 Con Paso 1 Hacer\n        suma <- suma + contador\n    FinPara\n    Escribir suma\nFinAlgoritmo",
+    "options": [
+      "6",
+      "3",
+      "0",
+      "4"
+    ],
+    "steps": [
+      "Inicializamos el acumulador: suma <- 0.",
+      "Primera vuelta: contador vale 1. Calculamos 0 + 1 = 1 y suma pasa a 1.",
+      "Segunda vuelta: contador vale 2. Calculamos 1 + 2 = 3 y suma pasa a 3.",
+      "Tercera vuelta: contador vale 3. Calculamos 3 + 3 = 6 y suma pasa a 6.",
+      "El ciclo termina al completar el recorrido hasta 3. Escribir suma muestra una sola vez el resultado final: 6."
+    ]
+  },
+  {
     "sec": "relacionales",
     "q": "¿(nota ≥ mínimo)?",
     "context": "Una plataforma permite enviar una tarea cuando la nota mínima se alcanza.",
